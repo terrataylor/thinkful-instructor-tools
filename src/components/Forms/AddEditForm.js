@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 class AddEditForm extends React.Component {
   state = {
     id: '',
-    fName:'', lName:'', email:'', asm:'', location:'', slack:'', paymentPlan:'', cohort:''
+    fName:'', lName:'', email:'', asm:'', location:'', slack:'', paymentPlan:'', cohort:'',githubOrg:''
   }
 
   onChange = e => {
@@ -26,7 +26,8 @@ class AddEditForm extends React.Component {
         location: this.state.location,
         slack: this.state.slack,
         paymentPlan: this.state.paymentPlan,
-        cohort: this.state.cohort
+        cohort: this.state.cohort,
+        githubOrg:this.state.githubOrg
       })
     })
       .then(response => response.json())
@@ -58,7 +59,8 @@ class AddEditForm extends React.Component {
         location: this.state.location,
         slack: this.state.slack,
         paymentPlan: this.state.paymentPlan,
-        cohort: this.state.cohort
+        cohort: this.state.cohort, 
+        githubOrg:this.state.githubOrg
       })
     })
       .then(response => response.json())
@@ -118,6 +120,10 @@ class AddEditForm extends React.Component {
         <FormGroup>
           <Label for="cohort">Cohort</Label>
           <Input type="text" name="cohort" id="cohort" onChange={this.onChange} value={this.state.cohort}  />
+        </FormGroup>
+        <FormGroup>
+          <Label for="cohort">Github Organization</Label>
+          <Input type="text" name="githubOrg" id="githubOrg" onChange={this.onChange} value={this.state.githubOrg}  />
         </FormGroup>
         <Button>Submit</Button>
       </Form>

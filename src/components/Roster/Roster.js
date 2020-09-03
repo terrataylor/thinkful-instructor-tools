@@ -9,7 +9,7 @@ class Roster extends React.Component {
     state = {
         students: [],
         studentList: '',
-        cohort: 0,
+        cohort: '',
         orgName: ''
     }
 
@@ -23,7 +23,6 @@ class Roster extends React.Component {
     }
 
     parseStudents(students) {
-        let studentRecords = [];
         let studentsArr = students.replace(/\t/g, ",").split("\n");
         console.log(studentsArr);
         for (let i = 0; i < studentsArr.length; i++) {
@@ -42,7 +41,8 @@ class Roster extends React.Component {
                 location: `${arr[5]},${state}`,
                 paymentPlan: arr[8],
                 slack: arr[10],
-                cohort: this.state.cohort
+                cohort: this.state.cohort,
+                githubOrg: this.state.orgName
             };
             console.log(arr);
             this.addToDB(studentObj);
@@ -70,7 +70,8 @@ class Roster extends React.Component {
             location: student.location,
             slack: student.slack,
             paymentPlan: student.paymentPlan,
-            cohort: student.cohort
+            cohort: student.cohort,
+            githubOrg: this.state.orgName
           })
         }).then(response => response.json())
         .then(item => {
@@ -137,9 +138,7 @@ class Roster extends React.Component {
 
 
         render() {
-            console.log(this.state.students);
             return (
-
                 <Container fluid className="App">
                     <Row>
                         <Col>
@@ -151,7 +150,7 @@ class Roster extends React.Component {
                                 </div>
                                 <div className="form-group">
                                     <label>Cohort Number</label>
-                                    <input type="number" className="form-control" id="cohort" name="cohort" placeholder="thinkful-ei-animal" onChange={this.handleChange} value={this.state.cohort} required />
+                                    <input type="number" className="form-control" id="cohort" name="cohort" placeholder="45" onChange={this.handleChange} value={this.state.cohort} required />
                                 </div>
                                 <div className="form-group">
                                     <label>Paste Student List Here</label>

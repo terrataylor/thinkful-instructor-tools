@@ -1,24 +1,126 @@
 import React from "react";
+import { Table, Button, Container } from 'reactstrap';
 
 class Organization extends React.Component {
     state = {
-
+        students: [],
+        token: '3809ca6cf76657811d232104d1c55f683d6003be'
     }
 
     componentDidMount() {
+        this.getItems();
+    }
 
+    getItems() {
+        fetch('http://localhost:3000/crud')
+            .then(response => response.json())
+            .then(students => {
+                //console.log(students);
+                this.setState({ students })
+            })
+            .catch(err => console.log(err))
     }
 
     componentWillUnmount() {
 
     }
 
+    inviteAll() {
+        let sentStudents = [];
+        if (this.state.students.length > 0) {
+            this.state.students.forEach(student => {
+                fetch(`https://api.github.com/orgs/${student.githubOrg}/invitations?access_token=${this.state.token}`, {
+                    method: 'post',
+                    body: JSON.stringify({
+                        "email": student.email,
+                        "role": "direct_member"
+                    })
+                }).then(data => {
+                    if (data.ok) {
+                        console.log(student)
+                        student.invite = "yes";
+
+                    } else {
+                        student.invite = "no";
+                    }
+                    sentStudents.push(student);
+                    console.log(sentStudents);
+                    this.setState({ students: sentStudents })
+                }).catch((error) => {
+                    console.error('Error:', error);
+                });
+            })
+        }
+    }
+
+    inviteOne(githubOrg,email){
+       /* fetch(`https://api.github.com/orgs/${githubOrg}/invitations?access_token=${this.state.token}`, {
+            method: 'post',
+            body: JSON.stringify({
+                "email": email,
+                "role": "direct_member"
+            })
+        }).then(data => {
+            if (data.ok) {
+                console.log(student)
+                student.invite = "yes";
+
+            } else {
+                student.invite = "no";
+            }
+            sentStudents.push(student);
+            console.log(sentStudents);
+            this.setState({ students: sentStudents })
+        }).catch((error) => {
+            console.error('Error:', error);
+        });*/
+    }
 
     render() {
+        let items = (<tr><td>No Items</td></tr>);
+        if (this.state.students.length > 0) {
+            items = this.state.students.map(item => {
+                let invite="";
+                console.log(item.invite);
+                if(item.invite=="yes"){
+                    invite = (<td>{item.invite} </td>);
+                } else{
+                    invite = (<td><Button color="primary" onClick={() => this.inviteOne(item)}>Resend</Button></td>);
+                }
+           
+                return (
+                    <tr key={item.id}>
+                        <th scope="row">{item.id}</th>
+                        <td>{item.fName}</td>
+                        <td>{item.lName}</td>
+                        <td>{item.email}</td>
+                        <td>{item.cohort}</td>
+                        <td>{item.githubOrg}</td>
+                        {invite}
+                    </tr>
+                )
+            })
+        }
         return (
-            <div>
-                Organization
-            </div>);
+            <Container>
+                <h2>Organization</h2>     <Button color="primary" onClick={() => this.inviteAll()}>Invite All</Button>
+                <Table responsive hover>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First</th>
+                            <th>Last</th>
+                            <th>Email</th>
+                            <th>Cohort</th>
+                            <th>Organization</th>
+                            <th>Invite Sent?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {items}
+                    </tbody>
+                </Table>
+            </Container>);
     }
 }
 

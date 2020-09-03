@@ -14,7 +14,9 @@ class YamlGenerator extends React.Component {
 
     }
 
-    generateYaml() {
+    generateYaml(e) {
+        e.preventDefault();
+        console.log("generating");
        /* for (let i = 0; i < nameList.length; i++) {
             let name = nameList[i].split(" ");
             if (name !== "") {
@@ -49,7 +51,7 @@ class YamlGenerator extends React.Component {
         return (
             <Container>
                 <h2>YamlGenerator</h2>
-                <Form onSubmit={this.props.item ? this.submitFormEdit : this.submitFormAdd}>
+                <Form onSubmit={this.generateYaml}>
                     <FormGroup>
                         <Label for="first">First Name</Label>
                         <Input type="text" name="fName" id="first" onChange={this.onChange} value={this.state.fName === null ? '' : this.state.fName} />
