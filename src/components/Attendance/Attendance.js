@@ -25,7 +25,7 @@ class Attendance extends React.Component {
         chat = chat.toLowerCase();
         for(let i=0;i<this.state.students.length;i++){
             let student =  this.state.students[i];
-            let name = `${student.fName.toLowerCase()} ${student.lName.toLowerCase()}`;
+            let name = `${student.fname.toLowerCase()} ${student.lname.toLowerCase()}`;
             if(name!==""){
                 console.log(name);
                 if(chat.includes(name)){
@@ -47,7 +47,7 @@ class Attendance extends React.Component {
 
 
     addToDB = student => {
-        fetch('http://localhost:3000/crud', {
+        fetch('https://instructor-tools-api.herokuapp.com/students', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ class Attendance extends React.Component {
     }
 
     getItems() {
-        fetch('http://localhost:3000/crud')
+        fetch('https://instructor-tools-api.herokuapp.com/students')
             .then(response => response.json())
             .then(students => {
                 console.log(students);

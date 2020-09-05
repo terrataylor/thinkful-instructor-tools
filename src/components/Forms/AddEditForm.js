@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 class AddEditForm extends React.Component {
   state = {
     id: '',
-    fName:'', lName:'', email:'', asm:'', location:'', slack:'', paymentPlan:'', cohort:'',githubOrg:''
+    fname:'', lname:'', email:'', asm:'', location:'', slack:'', paymentplan:'', cohort:'',githuborg:''
   }
 
   onChange = e => {
@@ -12,22 +12,23 @@ class AddEditForm extends React.Component {
   }
 
   submitFormAdd = e => {
-    e.preventDefault()
-    fetch('http://localhost:3000/crud', {
+    e.preventDefault();
+    console.log(this.state);
+    fetch('https://instructor-tools-api.herokuapp.com/students', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        fName: this.state.fName,
-        lName: this.state.lName,
+        fname: this.state.fname,
+        lname: this.state.lname,
         email: this.state.email,
         asm: this.state.asm,
         location: this.state.location,
         slack: this.state.slack,
-        paymentPlan: this.state.paymentPlan,
+        paymentplan: this.state.paymentplan,
         cohort: this.state.cohort,
-        githubOrg:this.state.githubOrg
+        githuborg:this.state.githuborg
       })
     })
       .then(response => response.json())
@@ -45,22 +46,22 @@ class AddEditForm extends React.Component {
   submitFormEdit = e => {
     e.preventDefault()
     console.log(this.state);
-    fetch('http://localhost:3000/crud', {
+    fetch('https://instructor-tools-api.herokuapp.com/students', {
       method: 'put',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         id: this.state.id,
-        fName: this.state.fName,
-        lName: this.state.lName,
+        fname: this.state.fname,
+        lname: this.state.lname,
         email: this.state.email,
         asm: this.state.asm,
         location: this.state.location,
         slack: this.state.slack,
-        paymentPlan: this.state.paymentPlan,
+        paymentplan: this.state.paymentplan,
         cohort: this.state.cohort, 
-        githubOrg:this.state.githubOrg
+        githuborg:this.state.githuborg
       })
     })
       .then(response => response.json())
@@ -81,21 +82,22 @@ class AddEditForm extends React.Component {
     // if item exists, populate the state with proper data
     console.log(this.props.item)
     if(this.props.item){
-      const { id, fName, lName, email, asm, location, slack, paymentPlan, cohort } = this.props.item
-      this.setState({ id,fName, lName, email, asm, location, slack, paymentPlan, cohort })
+      const { id, fname, lname, email, asm, location, slack, paymentplan, cohort,githuborg } = this.props.item
+      this.setState({ id,fname, lname, email, asm, location, slack, paymentplan, cohort,githuborg })
     }
   }
 
   render() {
+    console.log(this.state)
     return (
       <Form onSubmit={this.props.item ? this.submitFormEdit : this.submitFormAdd}>
         <FormGroup>
           <Label for="first">First Name</Label>
-          <Input type="text" name="fName" id="first" onChange={this.onChange} value={this.state.fName === null ? '' : this.state.fName} />
+          <Input type="text" name="fname" id="first" onChange={this.onChange} value={this.state.fname === null ? '' : this.state.fname} />
         </FormGroup>
         <FormGroup>
           <Label for="last">Last Name</Label>
-          <Input type="text" name="lName" id="last" onChange={this.onChange} value={this.state.lName === null ? '' : this.state.lName}  />
+          <Input type="text" name="lname" id="last" onChange={this.onChange} value={this.state.lname === null ? '' : this.state.lname}  />
         </FormGroup>
         <FormGroup>
           <Label for="email">Email</Label>
@@ -115,7 +117,7 @@ class AddEditForm extends React.Component {
         </FormGroup>
         <FormGroup>
           <Label for="payment">Payment Type</Label>
-          <Input type="text" name="paymentPlan" id="payment" onChange={this.onChange} value={this.state.paymentPlan}  />
+          <Input type="text" name="paymentplan" id="payment" onChange={this.onChange} value={this.state.paymentplan}  />
         </FormGroup>
         <FormGroup>
           <Label for="cohort">Cohort</Label>
@@ -123,7 +125,7 @@ class AddEditForm extends React.Component {
         </FormGroup>
         <FormGroup>
           <Label for="cohort">Github Organization</Label>
-          <Input type="text" name="githubOrg" id="githubOrg" onChange={this.onChange} value={this.state.githubOrg}  />
+          <Input type="text" name="githuborg" id="githuborg" onChange={this.onChange} value={this.state.githuborg}  />
         </FormGroup>
         <Button>Submit</Button>
       </Form>

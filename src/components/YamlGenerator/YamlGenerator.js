@@ -34,7 +34,7 @@ class YamlGenerator extends React.Component {
     }
 
     getItems() {
-        fetch('http://localhost:3000/crud')
+        fetch('https://instructor-tools-api.herokuapp.com/students')
             .then(response => response.json())
             .then(students => {
                 console.log(students);

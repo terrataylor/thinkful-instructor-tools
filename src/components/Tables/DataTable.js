@@ -7,7 +7,7 @@ class DataTable extends Component {
     deleteItem = id => {
         let confirmDelete = window.confirm('Delete item forever?')
         if (confirmDelete) {
-            fetch('http://localhost:3000/crud', {
+            fetch('https://instructor-tools-api.herokuapp.com/students', {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/json'
@@ -29,16 +29,17 @@ class DataTable extends Component {
         let items = (<tr><td>No Items</td></tr>);
         if (this.props.students.length > 0) {
             items = this.props.students.map(item => {
+                console.log(item)
                 return (
                     <tr key={item.id}>
                         <th scope="row">{item.id}</th>
-                        <td>{item.fName}</td>
-                        <td>{item.lName}</td>
+                        <td>{item.fname}</td>
+                        <td>{item.lname}</td>
                         <td>{item.email}</td>
                         <td>{item.asm}</td>
                         <td>{item.location}</td>
                         <td>{item.slack}</td>
-                        <td>{item.paymentPlan}</td>
+                        <td>{item.paymentplan}</td>
                         <td>{item.cohort}</td>
                         <td>
                             <div style={{ width: "110px" }}>

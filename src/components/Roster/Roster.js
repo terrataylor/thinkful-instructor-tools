@@ -10,7 +10,7 @@ class Roster extends React.Component {
         students: [],
         studentList: '',
         cohort: '',
-        orgName: ''
+        orgname: ''
     }
 
     handleChange = e => {
@@ -34,15 +34,15 @@ class Roster extends React.Component {
             console.log(state);
             let studentObj = 
             {
-                fName: arr[0],
-                lName: arr[1],
+                fname: arr[0],
+                lname: arr[1],
                 email: arr[2],
                 asm: arr[3],
                 location: `${arr[5]},${state}`,
-                paymentPlan: arr[8],
+                paymentplan: arr[8],
                 slack: arr[10],
                 cohort: this.state.cohort,
-                githubOrg: this.state.orgName
+                githuborg: this.state.orgname
             };
             console.log(arr);
             this.addToDB(studentObj);
@@ -57,21 +57,21 @@ class Roster extends React.Component {
 
     
     addToDB = student => {
-        fetch('http://localhost:3000/crud', {
+        fetch('https://instructor-tools-api.herokuapp.com/students', {
           method: 'post',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            fName: student.fName,
-            lName: student.lName,
+            fname: student.fname,
+            lname: student.lname,
             email: student.email,
             asm: student.asm,
             location: student.location,
             slack: student.slack,
-            paymentPlan: student.paymentPlan,
+            paymentplan: student.paymentplan,
             cohort: student.cohort,
-            githubOrg: this.state.orgName
+            githuborg: student.githuborg
           })
         }).then(response => response.json())
         .then(item => {
@@ -81,7 +81,7 @@ class Roster extends React.Component {
       }
 
     getItems() {
-        fetch('http://localhost:3000/crud')
+        fetch('https://instructor-tools-api.herokuapp.com/students')
             .then(response => response.json())
             .then(students => {
                 //console.log(students);
@@ -114,7 +114,7 @@ class Roster extends React.Component {
     deleteAllStudents = () => {
         let confirmDelete = window.confirm('Delete all Students?')
         if (confirmDelete) {
-            fetch('http://localhost:3000/', {
+            fetch('https://instructor-tools-api.herokuapp.com/', {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/json'
@@ -146,7 +146,7 @@ class Roster extends React.Component {
                         <form>
                                 <div className="form-group">
                                     <label>Github Organization Name</label>
-                                    <input type="text" className="form-control" id="orgName" name="orgName" placeholder="thinkful-ei-animal" onChange={this.handleChange} value={this.state.orgName} required/>
+                                    <input type="text" className="form-control" id="orgname" name="orgname" placeholder="thinkful-ei-animal" onChange={this.handleChange} value={this.state.orgname} required/>
                                 </div>
                                 <div className="form-group">
                                     <label>Cohort Number</label>
@@ -166,7 +166,7 @@ class Roster extends React.Component {
                     </Row>
                     <Row>
                         <Col>
-                            <h1 style={{ margin: "20px 0" }}>CRUD Database</h1>
+                            <h1 style={{ margin: "20px 0" }}>Student Roster</h1>
                         </Col>
                         <Col><button className="btn btn-danger" onClick={this.deleteAllStudents.bind(this)}>Clear All</button></Col>
                     </Row>
@@ -177,14 +177,14 @@ class Roster extends React.Component {
                     </Row>
                     <Row>
                         <Col>
-                            <CSVLink
+                            {this.state.students.length>0 && <CSVLink
                                 filename={"db.csv"}
                                 color="primary"
                                 style={{ float: "left", marginRight: "10px" }}
                                 className="btn btn-primary"
                                 data={this.state.students}>
                                 Download CSV
-                        </CSVLink>
+                        </CSVLink>}
                             <ModalForm buttonLabel="Add Item" addItemToState={this.addItemToState} />
                         </Col>
                     </Row>

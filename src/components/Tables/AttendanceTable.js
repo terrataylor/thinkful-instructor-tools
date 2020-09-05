@@ -7,7 +7,7 @@ class AttendanceTable extends Component {
     deleteItem = id => {
         let confirmDelete = window.confirm('Delete item forever?')
         if (confirmDelete) {
-            fetch('http://localhost:3000/crud', {
+            fetch('https://instructor-tools-api.herokuapp.com/students', {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/json'

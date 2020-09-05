@@ -12,7 +12,7 @@ class Organization extends React.Component {
     }
 
     getItems() {
-        fetch('http://localhost:3000/crud')
+        fetch('https://instructor-tools-api.herokuapp.com/students')
             .then(response => response.json())
             .then(students => {
                 //console.log(students);
@@ -29,7 +29,7 @@ class Organization extends React.Component {
         let sentStudents = [];
         if (this.state.students.length > 0) {
             this.state.students.forEach(student => {
-                fetch(`https://api.github.com/orgs/${student.githubOrg}/invitations?access_token=${this.state.token}`, {
+                fetch(`https://api.github.com/orgs/${student.githuborg}/invitations?access_token=${this.state.token}`, {
                     method: 'post',
                     body: JSON.stringify({
                         "email": student.email,
@@ -80,6 +80,7 @@ class Organization extends React.Component {
         let items = (<tr><td>No Items</td></tr>);
         if (this.state.students.length > 0) {
             items = this.state.students.map(item => {
+                console.log(item)
                 let invite="";
                 console.log(item.invite);
                 if(item.invite=="yes"){
@@ -91,11 +92,11 @@ class Organization extends React.Component {
                 return (
                     <tr key={item.id}>
                         <th scope="row">{item.id}</th>
-                        <td>{item.fName}</td>
-                        <td>{item.lName}</td>
+                        <td>{item.fname}</td>
+                        <td>{item.lname}</td>
                         <td>{item.email}</td>
                         <td>{item.cohort}</td>
-                        <td>{item.githubOrg}</td>
+                        <td>{item.githuborg}</td>
                         {invite}
                     </tr>
                 )
