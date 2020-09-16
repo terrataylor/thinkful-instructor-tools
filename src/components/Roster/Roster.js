@@ -85,6 +85,9 @@ class Roster extends React.Component {
             .then(response => response.json())
             .then(students => {
                 //console.log(students);
+                students.sort(function(a, b) { 
+                    return a.id - b.id ;
+                  });
                 this.setState({ students })
             })
             .catch(err => console.log(err))

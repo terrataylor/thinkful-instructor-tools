@@ -5,9 +5,9 @@ import { Container, Row, Col } from 'reactstrap';
 import ModalForm from '../Modals/Modal';
 class Attendance extends React.Component {
     state = {
-        students:[],
-        attendenceRecord:[],
-        chat:""
+        students: [],
+        attendenceRecord: [],
+        chat: ""
     }
 
     handleChange = e => {
@@ -20,22 +20,28 @@ class Attendance extends React.Component {
     }
 
     takeAttendance(chat) {
-       let attendanceArray=[];
+        let attendanceArray = [];
         console.log(chat);
         chat = chat.toLowerCase();
-        for(let i=0;i<this.state.students.length;i++){
-            let student =  this.state.students[i];
+        this.state.students.sort(function (a, b) {
+            return a.fname - b.fname;
+        });
+        console.log(this.state.students)
+        for (let i = 0; i < this.state.students.length; i++) {
+            let student = this.state.students[i];
             let name = `${student.fname.toLowerCase()} ${student.lname.toLowerCase()}`;
-            if(name!==""){
-                console.log(name);
-                if(chat.includes(name)){
-                    attendanceArray.push({id:student.id,name:name,present:"x"})
-                } else{
-                    attendanceArray.push({id:student.id,name:name,present:" "})
+            if (name !== "") {
+                if (chat.includes(name) || chat.includes(student.fname.toLowerCase) || chat.includes(student.fname)) {
+                    attendanceArray.push({ id: student.id, name: name, present: "x" })
+                } else {
+                    attendanceArray.push({ id: student.id, name: name, present: " " })
                 }
             }
         }
-        this.setState({attendenceRecord:attendanceArray});
+
+        
+        console.log(attendanceArray)
+        this.setState({ attendenceRecord: attendanceArray });
         console.log(attendanceArray);
     }
 
@@ -73,7 +79,19 @@ class Attendance extends React.Component {
         fetch('https://instructor-tools-api.herokuapp.com/students')
             .then(response => response.json())
             .then(students => {
-                console.log(students);
+                students.sort((a, b)=> {
+                    let fa = a.fname.toLowerCase(),
+                    fb = b.fname.toLowerCase();
+            
+                if (fa < fb) {
+                    return -1;
+                }
+                if (fa > fb) {
+                    return 1;
+                }
+                return 0;
+                });
+                console.log(students)
                 this.setState({ students })
             })
             .catch(err => console.log(err))
@@ -82,7 +100,6 @@ class Attendance extends React.Component {
 
 
     updateState = (student) => {
-        console.log(student);
         const itemIndex = this.state.students.findIndex(data => data.id === student.id)
         const newArray = [
             // destructure all items from beginning to the indexed item
@@ -102,7 +119,7 @@ class Attendance extends React.Component {
 
 
     componentDidMount() {
-       this.getItems();
+        this.getItems();
     }
 
     componentWillUnmount() {
@@ -112,7 +129,6 @@ class Attendance extends React.Component {
 
 
     render() {
-        console.log(this.state.attendenceRecord);
         return (
             <Container fluid className="App">
                 <Row>
@@ -143,14 +159,14 @@ class Attendance extends React.Component {
                 </Row>
                 <Row>
                     <Col>
-                      {this.state.attendenceRecord.length>0 &&  <CSVLink
+                        {this.state.attendenceRecord.length > 0 && <CSVLink
                             filename={"attendance.csv"}
                             color="primary"
                             style={{ float: "left", marginRight: "10px" }}
                             className="btn btn-primary"
                             data={this.state.attendenceRecord}>
                             Download CSV
-                      </CSVLink> }
+                      </CSVLink>}
                     </Col>
                 </Row>
             </Container>);
