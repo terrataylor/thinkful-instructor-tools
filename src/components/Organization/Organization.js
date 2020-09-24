@@ -1,10 +1,11 @@
 import React from "react";
 import { Table, Button, Container } from 'reactstrap';
+import apiUrl from '../../env'
 
 class Organization extends React.Component {
     state = {
         students: [],
-        token: '3809ca6cf76657811d232104d1c55f683d6003be'
+        token: ''
     }
 
     componentDidMount() {
@@ -12,7 +13,7 @@ class Organization extends React.Component {
     }
 
     getItems() {
-        fetch('https://instructor-tools-api.herokuapp.com/students')
+        fetch(apiUrl)
             .then(response => response.json())
             .then(students => {
                 //console.log(students);

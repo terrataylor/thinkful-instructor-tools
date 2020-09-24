@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-
+import apiUrl from '../../env';
 class YamlGenerator extends React.Component {
     state = {
         students: []
@@ -34,7 +34,7 @@ class YamlGenerator extends React.Component {
     }
 
     getItems() {
-        fetch('https://instructor-tools-api.herokuapp.com/students')
+        fetch(apiUrl)
             .then(response => response.json())
             .then(students => {
                 console.log(students);
@@ -54,7 +54,7 @@ class YamlGenerator extends React.Component {
                 <Form onSubmit={this.generateYaml}>
                     <FormGroup>
                         <Label for="first">First Name</Label>
-                        <Input type="text" name="fName" id="first" onChange={this.onChange} value={this.state.fName === null ? '' : this.state.fName} />
+                        <Input type="text" name="fname" id="first" onChange={this.onChange} value={this.state.fname === null ? '' : this.state.fname} />
                     </FormGroup>
                     <FormGroup>
                     </FormGroup>

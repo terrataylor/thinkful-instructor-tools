@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { Table, Button } from 'reactstrap';
-import ModalForm from '../Modals/Modal'
+import ModalForm from '../Modals/Modal';
+import apiUrl from '../../env';
 
 class DataTable extends Component {
 
     deleteItem = id => {
         let confirmDelete = window.confirm('Delete item forever?')
         if (confirmDelete) {
-            fetch('https://instructor-tools-api.herokuapp.com/students', {
+            fetch(apiUrl, {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/json'
@@ -29,12 +30,13 @@ class DataTable extends Component {
         let items = (<tr><td>No Items</td></tr>);
         if (this.props.students.length > 0) {
             items = this.props.students.map(item => {
-                console.log(item)
+             //   console.log(item)
                 return (
                     <tr key={item.id}>
                         <th scope="row">{item.id}</th>
                         <td>{item.fname}</td>
                         <td>{item.lname}</td>
+                        <td>{item.preferredname}</td>
                         <td>{item.email}</td>
                         <td>{item.asm}</td>
                         <td>{item.location}</td>
@@ -60,6 +62,7 @@ class DataTable extends Component {
                         <th>ID</th>
                         <th>First</th>
                         <th>Last</th>
+                        <th>Preferred Name</th>
                         <th>Email</th>
                         <th>ASM</th>
                         <th>Location</th>

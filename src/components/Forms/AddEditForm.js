@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import apiUrl from '../../env'
 
 class AddEditForm extends React.Component {
   state = {
     id: '',
-    fname:'', lname:'', email:'', asm:'', location:'', slack:'', paymentplan:'', cohort:'',githuborg:''
+    fname:'', lname:'', email:'', asm:'', location:'', slack:'', paymentplan:'', cohort:'',githuborg:'',preferredname:''
   }
 
   onChange = e => {
@@ -14,7 +15,7 @@ class AddEditForm extends React.Component {
   submitFormAdd = e => {
     e.preventDefault();
     console.log(this.state);
-    fetch('https://instructor-tools-api.herokuapp.com/students', {
+    fetch(apiUrl, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -22,6 +23,7 @@ class AddEditForm extends React.Component {
       body: JSON.stringify({
         fname: this.state.fname,
         lname: this.state.lname,
+        preferredname: this.state.preferredname,
         email: this.state.email,
         asm: this.state.asm,
         location: this.state.location,
@@ -45,28 +47,29 @@ class AddEditForm extends React.Component {
 
   submitFormEdit = e => {
     e.preventDefault()
-    console.log(this.state);
-    fetch('https://instructor-tools-api.herokuapp.com/students', {
-      method: 'put',
+    console.log("Before Update",this.state);
+    fetch(apiUrl, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        id: this.state.id,
+        id:this.state.id,
         fname: this.state.fname,
         lname: this.state.lname,
+        preferredname: this.state.preferredname,
         email: this.state.email,
         asm: this.state.asm,
         location: this.state.location,
         slack: this.state.slack,
         paymentplan: this.state.paymentplan,
-        cohort: this.state.cohort, 
+        cohort: this.state.cohort,
         githuborg:this.state.githuborg
       })
     })
       .then(response => response.json())
       .then(item => {
-            console.log(item)
+            console.log("After update",item)
         if(Array.isArray(item)) {
          
           this.props.updateState(item[0])
@@ -82,13 +85,13 @@ class AddEditForm extends React.Component {
     // if item exists, populate the state with proper data
     console.log(this.props.item)
     if(this.props.item){
-      const { id, fname, lname, email, asm, location, slack, paymentplan, cohort,githuborg } = this.props.item
-      this.setState({ id,fname, lname, email, asm, location, slack, paymentplan, cohort,githuborg })
+      const { id, fname, lname, email, asm, location, slack, paymentplan, cohort,githuborg,preferredname } = this.props.item
+      this.setState({ id,fname, lname, email, asm, location, slack, paymentplan, cohort,githuborg,preferredname })
     }
   }
 
   render() {
-    console.log(this.state)
+   // console.log(this.state)
     return (
       <Form onSubmit={this.props.item ? this.submitFormEdit : this.submitFormAdd}>
         <FormGroup>
@@ -98,6 +101,10 @@ class AddEditForm extends React.Component {
         <FormGroup>
           <Label for="last">Last Name</Label>
           <Input type="text" name="lname" id="last" onChange={this.onChange} value={this.state.lname === null ? '' : this.state.lname}  />
+        </FormGroup>
+        <FormGroup>
+          <Label for="email">PreferredName</Label>
+          <Input type="text" name="preferredname" id="preferredname" onChange={this.onChange} value={this.state.preferredname === null ? '' : this.state.preferredname}  />
         </FormGroup>
         <FormGroup>
           <Label for="email">Email</Label>

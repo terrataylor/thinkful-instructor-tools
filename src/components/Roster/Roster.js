@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import ModalForm from '../Modals/Modal';
 import DataTable from '../Tables/DataTable';
 import { CSVLink } from "react-csv";
+import apiUrl from '../../env'
 
 class Roster extends React.Component {
 
@@ -25,12 +26,14 @@ class Roster extends React.Component {
     parseStudents(students) {
         let studentsArr = students.replace(/\t/g, ",").split("\n");
         console.log(studentsArr);
+        let formattedStudents = [];
         for (let i = 0; i < studentsArr.length; i++) {
             let arr = studentsArr[i].split(",");
+            console.log(arr)
             if(!arr[6]){
                 console.log(arr,i);
             }
-            let state = arr[6].replace(/;not started;/g, "");
+            let state = arr[6];//.replace(/;not started;/g, "");
             console.log(state);
             let studentObj = 
             {
@@ -44,9 +47,21 @@ class Roster extends React.Component {
                 cohort: this.state.cohort,
                 githuborg: this.state.orgname
             };
-            console.log(arr);
-            this.addToDB(studentObj);
+            //console.log(studentObj);
+            formattedStudents.push(studentObj);
         }
+        formattedStudents.sort((a, b) =>{
+            console.log(a,b)
+            var textA = a.fname.toUpperCase();
+            var textB = b.fname.toUpperCase();
+            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        });
+        console.log(formattedStudents)
+        formattedStudents.forEach(student=>{
+            this.addToDB(student);
+            console.log(student);
+        })
+
     }
 
     addItemToState = (student) => {
@@ -57,7 +72,7 @@ class Roster extends React.Component {
 
     
     addToDB = student => {
-        fetch('https://instructor-tools-api.herokuapp.com/students', {
+        fetch(apiUrl, {
           method: 'post',
           headers: {
             'Content-Type': 'application/json'
@@ -65,6 +80,7 @@ class Roster extends React.Component {
           body: JSON.stringify({
             fname: student.fname,
             lname: student.lname,
+            preferredname: student.preferredname,
             email: student.email,
             asm: student.asm,
             location: student.location,
@@ -81,10 +97,10 @@ class Roster extends React.Component {
       }
 
     getItems() {
-        fetch('https://instructor-tools-api.herokuapp.com/students')
+        fetch(apiUrl)
             .then(response => response.json())
             .then(students => {
-                //console.log(students);
+                console.log(students);
                 students.sort(function(a, b) { 
                     return a.id - b.id ;
                   });
@@ -117,7 +133,7 @@ class Roster extends React.Component {
     deleteAllStudents = () => {
         let confirmDelete = window.confirm('Delete all Students?')
         if (confirmDelete) {
-            fetch('https://instructor-tools-api.herokuapp.com/', {
+            fetch('http://localhost:3000/', {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/json'
@@ -132,6 +148,7 @@ class Roster extends React.Component {
     }
 
         componentDidMount() {
+            console.log(apiUrl);
             this.getItems();
         }
 

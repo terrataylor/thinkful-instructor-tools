@@ -1,8 +1,9 @@
 import React from "react";
 import AttendanceTable from '../Tables/AttendanceTable';
 import { CSVLink } from "react-csv";
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, UncontrolledDropdown } from 'reactstrap';
 import ModalForm from '../Modals/Modal';
+import apiUrl from '../../env'
 class Attendance extends React.Component {
     state = {
         students: [],
@@ -29,9 +30,12 @@ class Attendance extends React.Component {
         console.log(this.state.students)
         for (let i = 0; i < this.state.students.length; i++) {
             let student = this.state.students[i];
-            let name = `${student.fname.toLowerCase()} ${student.lname.toLowerCase()}`;
+             let fname = student.fname.toLowerCase();
+             let lname = student.lname.toLowerCase();
+             let name = `${fname} ${lname}`;
+           let preferredname= student.preferredname != undefined ? student.preferredname :"";
             if (name !== "") {
-                if (chat.includes(name) || chat.includes(student.fname.toLowerCase) || chat.includes(student.fname)) {
+                if (chat.includes(name) || chat.includes(fname) || chat.includes(student.fname)|| chat.includes(preferredname)) {
                     attendanceArray.push({ id: student.id, name: name, present: "x" })
                 } else {
                     attendanceArray.push({ id: student.id, name: name, present: " " })
@@ -53,19 +57,19 @@ class Attendance extends React.Component {
 
 
     addToDB = student => {
-        fetch('https://instructor-tools-api.herokuapp.com/students', {
+        fetch(apiUrl, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                fName: student.fName,
-                lName: student.lName,
+                fname: student.fname,
+                lname: student.lname,
                 email: student.email,
                 asm: student.asm,
                 location: student.location,
                 slack: student.slack,
-                paymentPlan: student.paymentPlan,
+                paymentplan: student.paymentplan,
                 cohort: student.cohort
             })
         }).then(response => response.json())
@@ -76,7 +80,7 @@ class Attendance extends React.Component {
     }
 
     getItems() {
-        fetch('https://instructor-tools-api.herokuapp.com/students')
+        fetch(apiUrl)
             .then(response => response.json())
             .then(students => {
                 students.sort((a, b)=> {
