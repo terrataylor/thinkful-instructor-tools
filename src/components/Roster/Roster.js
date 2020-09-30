@@ -34,7 +34,10 @@ class Roster extends React.Component {
                 console.log(arr,i);
             }
             let state = arr[6];//.replace(/;not started;/g, "");
-            console.log(state);
+            //console.log(state);
+            if(arr[10]==""){
+                console.log(`Hey!`,arr)
+            }
             let studentObj = 
             {
                 fname: arr[0],
@@ -43,23 +46,33 @@ class Roster extends React.Component {
                 asm: arr[3],
                 location: `${arr[5]},${state}`,
                 paymentplan: arr[8],
-                slack: arr[10],
                 cohort: this.state.cohort,
                 githuborg: this.state.orgname
             };
+
+            //Getting slack handle
+            if(arr[9].includes("@")){ 
+                studentObj.slack=arr[9];
+            } else{
+                studentObj.slack=arr[10]
+            }
+
+            //getting payment plan
+            if(arr[7].includes("isa_stipend") || arr[7].includes("isa") || arr[7].includes("m2m") || arr[7].includes("loan") || arr[7].includes("upfront")){
+                studentObj.paymentplan=arr[7];
+            }
             //console.log(studentObj);
             formattedStudents.push(studentObj);
         }
         formattedStudents.sort((a, b) =>{
-            console.log(a,b)
             var textA = a.fname.toUpperCase();
             var textB = b.fname.toUpperCase();
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
         });
         console.log(formattedStudents)
         formattedStudents.forEach(student=>{
-            this.addToDB(student);
-            console.log(student);
+  this.addToDB(student);
+           // console.log(student);
         })
 
     }

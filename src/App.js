@@ -5,6 +5,7 @@ import Roster from './components/Roster/Roster';
 import Attendance from './components/Attendance/Attendance';
 import Organization from './components/Organization/Organization';
 import YamlGenerator from './components/YamlGenerator/YamlGenerator';
+import Resources from './components/Resources/Resources';
 
 
 import {
@@ -19,7 +20,7 @@ function App() {
     <Router>
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light  justify-content-between">
-          <a className="navbar-brand" href="/">Navbar</a>
+          <a className="navbar-brand" href="/">Thinkful Instructor Apps</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -37,6 +38,9 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to="/organization">Github Org Invite Sender</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/resources">Resources</Link>
+              </li>
             </ul>
           </div>
         </nav>
@@ -52,6 +56,9 @@ function App() {
           </Route>
           <Route path="/organization">
            <Organization />
+          </Route>
+          <Route path="/resources">
+           <Resources />
           </Route>
           <Route path="/">
             <Roster />
