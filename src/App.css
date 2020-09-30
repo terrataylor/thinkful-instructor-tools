@@ -13,3 +13,11 @@ table th, table td { white-space: nowrap; }
 .slackReminders div{
     margin: 10px;
 }
+
+.students-yaml{
+    white-space: pre-wrap;
+}
+
+.row {
+    margin-bottom: 10px;
+}

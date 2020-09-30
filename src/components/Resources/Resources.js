@@ -13,9 +13,6 @@ class Resources extends React.Component {
         this.getItems();
     }
 
-    componentWillUnmount() {
-
-    }
 
     generateYaml(e) {
         e.preventDefault();
@@ -33,9 +30,6 @@ class Resources extends React.Component {
             .catch(err => console.log(err))
     }
 
-    checkIfDups(firstName, list) {
-
-    }
 
     render() {
         return (
@@ -63,18 +57,18 @@ class Resources extends React.Component {
                             <CardHeader>Useful Links</CardHeader>
                             <CardBody>
                                 <CardText>
-                                    <div><a href="https://docs.google.com/spreadsheets/d/1SLQIdtcTj6qNUxcZeHdfMe4C7yHqGglxyIxnJ8HjtCU/edit?ts=5ef21b9d#gid=955836459">Student Roster</a></div>
-                                    <div><a href="https://ftgen-trigger.herokuapp.com/">Syllabus Generator</a></div>
-                                    <div><a href="https://docs.google.com/spreadsheets/d/1p0mXIIIC68RCw4UgXLt3Z-ZsyY2eHM3XRlEqXv6ikX8/edit?ts=5ef21b21#gid=168336559">Cohort Staffing</a></div>
-                                    <div><a href="https://thinkful-ed.github.io/ei-cohort-start-checklist/">Cohort Launch Checklist1 (EI)</a></div>
-                                    <div><a href="https://docs.google.com/document/d/129sZIHXy6HepYzxIeELAyU59L7RxaUNaqg9OtACYGLc/edit#">Cohort Launch Checklist2 (EI)</a></div>
-                                    <div><a href="https://github.com/Thinkful-Ed/ei-shopping-list-solutions">Shopping List Starter Repo (EI)</a></div>
-                                    <div><a href="https://thinkful.slides.com/users/sign_in">Slides</a></div>
+                                    <div><a target="_blank" href="https://docs.google.com/spreadsheets/d/1SLQIdtcTj6qNUxcZeHdfMe4C7yHqGglxyIxnJ8HjtCU/edit?ts=5ef21b9d#gid=955836459">Student Roster</a></div>
+                                    <div><a target="_blank" href="https://ftgen-trigger.herokuapp.com/">Syllabus Generator</a></div>
+                                    <div><a target="_blank" href="https://docs.google.com/spreadsheets/d/1p0mXIIIC68RCw4UgXLt3Z-ZsyY2eHM3XRlEqXv6ikX8/edit?ts=5ef21b21#gid=168336559">Cohort Staffing</a></div>
+                                    <div><a target="_blank" href="https://thinkful-ed.github.io/ei-cohort-start-checklist/">Cohort Launch Checklist1 (EI)</a></div>
+                                    <div><a target="_blank" href="https://docs.google.com/document/d/129sZIHXy6HepYzxIeELAyU59L7RxaUNaqg9OtACYGLc/edit#">Cohort Launch Checklist2 (EI)</a></div>
+                                    <div><a target="_blank" href="https://github.com/Thinkful-Ed/ei-shopping-list-solutions">Shopping List Starter Repo (EI)</a></div>
+                                    <div><a target="_blank" href="https://thinkful.slides.com/users/sign_in">Slides</a></div>
+                                    <div><a target="_blank" href="https://chegg-my.sharepoint.com/:f:/p/tauhida/EgpyabZsgy5Mhz8yuIBwc4IBahNn7lrwA366oyVmQ4NOlQ?e=CeunqK">Student Health Docs</a></div>
 
                                 </CardText>
                             </CardBody>
                         </Card>
-
                     </Col>
                 </Row>
                 <Row>
@@ -100,14 +94,12 @@ class Resources extends React.Component {
                             <CardBody>
                                 <CardTitle tag='h5'>Impersonate a student to see checkpoint submissions</CardTitle>
                                 <CardText>(find student email from their dashboard) <p>How to impersonate a student: <a href="https://accounts.thinkful.com/admin/impersonate/student_email">Impersonate</a></p>
-
                                     <p>Make sure you unimpersonate after you are done
                                     <a href="https://accounts.thinkful.com/admin/unimpersonate">Unimpersonate</a></p>
                                 </CardText>
                             </CardBody>
                         </Card>
-                        {/* Generate Student health documents here https://chegg-my.sharepoint.com/:f:/p/tauhida/EgpyabZsgy5Mhz8yuIBwc4IBahNn7lrwA366oyVmQ4NOlQ?e=CeunqK  and give TAs access manually */}
-                    </Col>
+                      </Col>
                 </Row>
             </Container>);
     }

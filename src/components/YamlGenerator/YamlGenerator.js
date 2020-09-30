@@ -110,9 +110,9 @@ class YamlGenerator extends React.Component {
                //  console.log(firstName, lastInitial);
              console.log(this.checkIfDups(firstName, nameList))
                  if (this.checkIfDups(firstName, nameList)) {
-                     output[i] = `  - name: ${nameList[i]}\n   shortName: ${firstName}${lastInitial}\n`;
+                     output[i] = `  - name: ${firstName} ${lastName}\n     shortName: ${firstName}${lastInitial}\n`;
                  } else {
-                     output[i] = `  - name: ${nameList[i]}\n`;
+                     output[i] = `  - name: ${firstName} ${lastName}\n`;
                  }
              }
          }
@@ -205,7 +205,7 @@ class YamlGenerator extends React.Component {
                     <div className="yaml">
                         <div>courseCode: {this.state.courseCode}</div>
                         <div>cohortNumber: {this.state.cohortNum}</div>
-                        <div>students: <div>{this.state.students}</div></div>
+                        <div>students: <div className="students-yaml">{this.state.students}</div></div>
                         <div></div>
                         {this.state.rewriteInputPath === true && 
                         <div>flags:
@@ -216,9 +216,11 @@ class YamlGenerator extends React.Component {
                             </div>}
                         <div>oddStudent: solo</div>
                         <div>startDate: {this.state.startDate}</div>
+                        <div>workshopUrl: {this.state.workshopUrl}</div>
+                        <div>timezone: ET</div>
                         <div>breakWeeks:</div>
-                        <div>&nbsp;&nbsp;- {this.state.breakWeek1}</div>
-                        <div>&nbsp;&nbsp;- {this.state.breakWeek2}</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;- {this.state.breakWeek1}</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;- {this.state.breakWeek2}</div>
 
 
                         <div className="slackReminders">

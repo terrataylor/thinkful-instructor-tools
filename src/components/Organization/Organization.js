@@ -16,7 +16,7 @@ class Organization extends React.Component {
         fetch(apiUrl)
             .then(response => response.json())
             .then(students => {
-                //console.log(students);
+                console.log(students);
                 this.setState({ students })
             })
             .catch(err => console.log(err))

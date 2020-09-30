@@ -26,20 +26,20 @@ function App() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item active">
-                <Link className="nav-link" to="/">Roster</Link>
-              </li>
-              <li className="nav-item active">
-                <Link className="nav-link" to="/yaml">Yaml File Generator</Link>
+              <li className="nav-item">
+                <Link className="nav-link" activeClassName="active" to="/">Roster</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/attendance">Attendance Taker</Link>
+                <Link className="nav-link" activeClassName="active" to="/yaml">Yaml File Generator</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/organization">Github Org Invite Sender</Link>
+                <Link className="nav-link" activeClassName="active" to="/attendance">Attendance Taker</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/resources">Resources</Link>
+                <Link className="nav-link" activeClassName="active" to="/organization">Github Org Invite Sender</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" activeClassName="active" to="/resources">Resources</Link>
               </li>
             </ul>
           </div>
