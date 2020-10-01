@@ -231,7 +231,7 @@ class YamlGenerator extends React.Component {
                             <div><strong># Slack /remind command for afternoon Workshop</strong></div>
                             <div># /remind #ei-cohort{this.state.cohortNum} "It's time for our afternoon workshop: {this.state.workshopUrl} {this.state.slackHandles}" at 1:30PM {this.state.timeZone} every weekday.</div>
                             <div><strong># Slack /remind command for end of TA session</strong></div>
-                            <div> /remind #ei-cohort{this.state.cohortNum} "TA support is available until 5:30 PM Eastern. Please submit tickets at least 15 minutes before EOD {this.state.slackHandles}" at 5PM {this.state.timeZone} every weekday.</div>
+                            <div># /remind #ei-cohort{this.state.cohortNum} "TA support is available until 5:30 PM Eastern. Please submit tickets at least 15 minutes before EOD {this.state.slackHandles}" at 5PM {this.state.timeZone} every weekday.</div>
                         </div>
                     </div>
                     </Col>
