@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Container, Button, Form, TextArea, FormGroup, Label, Input } from 'reactstrap';
+import { Row, Col, Container, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import apiUrl from '../../env';
 class YamlGenerator extends React.Component {
     state = {
@@ -99,7 +99,7 @@ class YamlGenerator extends React.Component {
          for (let i = 0; i < nameList.length; i++) {
              let name = nameList[i].split("	");
              console.log(nameList[i],name,name.length)
-             if(name.length==1){
+             if(name.length===1){
                  console.log(name)
                  name = name[0].split(" ");
              }
@@ -190,7 +190,7 @@ class YamlGenerator extends React.Component {
                         <Row>
                             <Col md="4">
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="rewriteInputPath" name="rewriteInputPath" onChange={this.onChange} value={this.state.rewriteInputPath}/>
+                                    <input className="form-check-input" type="checkbox" id="rewriteInputPath" name="rewriteInputPath" onChange={this.onChange} value={this.state.rewriteInputPath}/>
                                     <Label className="form-check-label" for="rewriteInputPath">
                                         rewriteInputPath
                                 </Label>

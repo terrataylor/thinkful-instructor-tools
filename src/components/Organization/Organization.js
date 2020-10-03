@@ -84,7 +84,7 @@ class Organization extends React.Component {
                 console.log(item)
                 let invite="";
                 console.log(item.invite);
-                if(item.invite=="yes"){
+                if(item.invite==="yes"){
                     invite = (<td>{item.invite} </td>);
                 } else{
                     invite = (<td><Button color="primary" onClick={() => this.inviteOne(item)}>Resend</Button></td>);

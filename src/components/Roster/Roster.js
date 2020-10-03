@@ -134,19 +134,24 @@ class Roster extends React.Component {
     }
 
     deleteAllStudents = () => {
+       
         let confirmDelete = window.confirm('Delete all Students?')
         if (confirmDelete) {
-            fetch('http://localhost:3000/', {
+        
+                  fetch(`${apiUrl}/all`, {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                } 
+               
             })
                 .then(response => response.json())
                 .then(item => {
                     this.getItems();
                 })
                 .catch(err => console.log(err))
+        
+          
         }
     }
 

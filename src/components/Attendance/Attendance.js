@@ -1,14 +1,15 @@
 import React from "react";
 import AttendanceTable from '../Tables/AttendanceTable';
 import { CSVLink } from "react-csv";
-import { Container, Row, Col, UncontrolledDropdown } from 'reactstrap';
-import ModalForm from '../Modals/Modal';
-import apiUrl from '../../env'
+import { Container, Row, Col} from 'reactstrap';
+import apiUrl from '../../env';
+import moment from 'momentjs';
 class Attendance extends React.Component {
     state = {
         students: [],
         attendenceRecord: [],
-        chat: ""
+        chat: "",
+        absences:[]
     }
 
     handleChange = e => {
@@ -24,28 +25,30 @@ class Attendance extends React.Component {
         let attendanceArray = [];
         console.log(chat);
         chat = chat.toLowerCase();
+        let notificationArr = [];
         this.state.students.sort(function (a, b) {
             return a.fname - b.fname;
         });
-        console.log(this.state.students)
         for (let i = 0; i < this.state.students.length; i++) {
             let student = this.state.students[i];
              let fname = student.fname.toLowerCase();
              let lname = student.lname.toLowerCase();
              let name = `${fname} ${lname}`;
-           let preferredname= student.preferredname != undefined ? student.preferredname :"";
+           let preferredname= student.preferredname !== undefined ? student.preferredname :"";
             if (name !== "") {
                 if (chat.includes(name) || chat.includes(fname) || chat.includes(student.fname)|| chat.includes(preferredname)) {
                     attendanceArray.push({ id: student.id, name: name, present: "x" })
                 } else {
-                    attendanceArray.push({ id: student.id, name: name, present: " " })
+                    attendanceArray.push({ id: student.id, name: name, present: " " });
+                    notificationArr.push(student);
                 }
             }
         }
+        //this.generateNotifications(notificationArr);
 
         
         console.log(attendanceArray)
-        this.setState({ attendenceRecord: attendanceArray });
+        this.setState({ attendenceRecord: attendanceArray,absences:notificationArr });
         console.log(attendanceArray);
     }
 
@@ -55,6 +58,9 @@ class Attendance extends React.Component {
         }))
     }
 
+    generateNotifications = (students)=>{
+        console.log(students)
+    }
 
     addToDB = student => {
         fetch(apiUrl, {
@@ -133,8 +139,27 @@ class Attendance extends React.Component {
 
 
     render() {
+        let absences = '';
+        let students='';
+        if (this.state.absences.length > 0) {
+            absences = this.state.absences.map(item => {
+                console.log(item)
+                let staffStatement = `@${item.asm} ${item.fname} ${item.lname} was absent from session today. I have asked them to submit an absence request.`;
+                return (
+                   <div>{staffStatement}</div>
+                )
+            })
+            students = this.state.absences.map(item => {
+                console.log(item)
+                let studentStatement = `${item.slack} Please submit an absence request for today's session. http://bit.ly/AbsenceRequests`;
+                return (
+                   <div>{studentStatement}</div>
+                )
+            })
+        }
+        
         return (
-            <Container fluid className="App">
+            <Container className="App">
                 <Row>
                     <Col>
                         <h2>Attendance</h2>
@@ -153,7 +178,16 @@ class Attendance extends React.Component {
                 </Row>
                 <Row>
                     <Col>
-                        <h1 style={{ margin: "20px 0" }}>Attendance</h1>
+                        <h5 style={{ margin: "20px 0" }}>Absence Notifications</h5>
+                        <div><strong>For Staff Slack Channel</strong></div>
+                        {absences}
+                        <div><strong>For Student Slack Channel</strong></div>
+                        {students}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <h5 style={{ margin: "20px 0" }}>Attendance</h5>
                     </Col>
                 </Row>
                 <Row>

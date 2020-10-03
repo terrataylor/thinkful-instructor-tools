@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Button } from 'reactstrap';
-import ModalForm from '../Modals/Modal'
+import { Table} from 'reactstrap';
 
 class AttendanceTable extends Component {
 

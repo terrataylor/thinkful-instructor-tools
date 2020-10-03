@@ -69,6 +69,7 @@ class DataTable extends Component {
                         <th>Slack</th>
                         <th>Payment Type</th>
                         <th>Cohort</th>
+                        <th>Modify</th>
                     </tr>
                 </thead>
                 <tbody>
