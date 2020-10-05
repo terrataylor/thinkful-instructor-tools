@@ -3,7 +3,7 @@ import AttendanceTable from '../Tables/AttendanceTable';
 import { CSVLink } from "react-csv";
 import { Container, Row, Col} from 'reactstrap';
 import apiUrl from '../../env';
-import moment from 'momentjs';
+//import * as moment from 'moment';
 class Attendance extends React.Component {
     state = {
         students: [],
