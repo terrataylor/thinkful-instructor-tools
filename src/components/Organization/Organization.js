@@ -34,6 +34,7 @@ class Organization extends React.Component {
         console.log(this.state)
         if (this.state.students.length > 0 && this.state.token !== '') {
             this.state.students.forEach(student => {
+                setTimeout(()=>{
                 fetch(`https://api.github.com/orgs/${student.githuborg}/invitations?access_token=${this.state.token}`, {
                      method: 'post',
                      body: JSON.stringify({
@@ -54,6 +55,7 @@ class Organization extends React.Component {
                  }).catch((error) => {
                      console.error('Error:', error);
                  });
+                },1000);
             })
         } else{
             this.setState({error:"Please Enter your github Token"})
@@ -77,8 +79,8 @@ class Organization extends React.Component {
                 student.invite = "no";
             }
             sentStudents.push(student);
-            console.log(sentStudents);
-            this.setState({ students: sentStudents })
+            //console.log(sentStudents);
+         //   this.setState({ students: sentStudents })
         }).catch((error) => {
             console.error('Error:', error);
         });
