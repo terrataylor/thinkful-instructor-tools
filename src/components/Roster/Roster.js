@@ -39,19 +39,19 @@ class Roster extends React.Component {
                 email: arr[2],
                 asm: arr[3],
                 location: `${arr[5]},${formattedState}`,
-                paymentplan: arr[8],
+                paymentplan: arr[8] ? arr[8]:'',
                 cohort: cohort,
                 githuborg: githuborg
             };
             //Getting slack handle
-            if (arr[9].includes("@")) {
+            if (arr[9] && arr[9].includes("@")) {
                 studentObj.slack = arr[9];
             } else {
                 studentObj.slack = arr[10]
             }
             console.log(studentObj);
             //getting payment plan
-            if (arr[7].includes("isa_stipend") || arr[7].includes("isa") || arr[7].includes("m2m") || arr[7].includes("loan") || arr[7].includes("upfront")) {
+            if (arr[7] && (arr[7].includes("isa_stipend") || arr[7].includes("isa") || arr[7].includes("m2m") || arr[7].includes("loan") || arr[7].includes("upfront"))) {
                 studentObj.paymentplan = arr[7];
             }
             formattedStudents.push(studentObj);

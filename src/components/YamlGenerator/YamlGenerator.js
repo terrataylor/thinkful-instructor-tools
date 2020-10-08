@@ -8,7 +8,7 @@ class YamlGenerator extends React.Component {
         courseCode:"dev-301",
         cohortNum:46,
         startDate:'',
-        workshopUrl:"http://rebrand.ly",
+        workshopUrl:"https://rebrand.ly/ei46workshop",
         timeZone: "EST",
         breakWeek1:6,
         breakWeek2:11,
@@ -91,6 +91,7 @@ class YamlGenerator extends React.Component {
     }
 
     generateYaml=e=> {
+        console.log(this.state.startDate);
         e.preventDefault();
         let students = this.state.studentList.trim().replace("	", " ").split("\n").sort();
        var nameList = students.map(function (item) {
@@ -101,15 +102,12 @@ class YamlGenerator extends React.Component {
              let name = nameList[i].split("	");
              console.log(nameList[i],name,name.length)
              if(name.length===1){
-                 console.log(name)
                  name = name[0].split(" ");
              }
              if (name.length>1) {
                  let firstName = name[0];
                  let lastName = name[1];
                  let lastInitial = lastName[0];
-               //  console.log(firstName, lastInitial);
-             console.log(this.checkIfDups(firstName, nameList))
                  if (this.checkIfDups(firstName, nameList)) {
                      output[i] = `  - name: ${firstName} ${lastName}\n     shortName: ${firstName}${lastInitial}\n`;
                  } else {
@@ -118,7 +116,7 @@ class YamlGenerator extends React.Component {
              }
          }
          console.log(output)
-         this.setState({startDate:'2020-10-11',students:output})
+         this.setState({students:output})
     }
 
   
