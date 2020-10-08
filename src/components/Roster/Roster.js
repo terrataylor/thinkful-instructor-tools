@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import ModalForm from '../Modals/Modal';
 import DataTable from '../Tables/DataTable';
 import { CSVLink } from "react-csv";
-import apiUrl from '../../env'
+import apiUrl from '../../env';
 
 class Roster extends React.Component {
 
@@ -25,13 +25,13 @@ class Roster extends React.Component {
 
     parseStudents(students) {
         let studentsArr = students.replace(/\t/g, ",").split("\n");
-        let {cohort,githuborg}= this.state;
+        let { cohort, githuborg } = this.state;
         let formattedStudents = [];
         for (let i = 0; i < studentsArr.length; i++) {
             let arr = studentsArr[i].split(",");
-             let state = arr[6];
-            let formattedState = state.replace(';not started;','').replace(';hidden from queue','').replace('ENROLLED','').replace('unmatched;','').replace('undefined','');
-            
+            let state = arr[6];
+            let formattedState = state.replace(';not started;', '').replace(';hidden from queue', '').replace('ENROLLED', '').replace('unmatched;', '').replace('undefined', '');
+
             let studentObj =
             {
                 fname: arr[0],
@@ -103,13 +103,16 @@ class Roster extends React.Component {
         fetch(apiUrl)
             .then(response => response.json())
             .then(students => {
-              //  console.log(students);
-                students.sort(function (a, b) {
-                    return a.id - b.id;
-                });
-                this.setState({ students })
+                 console.log(students);
+                if (students.length>0) {
+                    students.sort(function (a, b) {
+                        return a.id - b.id;
+                    });
+                    this.setState({ students })
+                }
+
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log("Error:",err))
     }
 
 
@@ -134,24 +137,24 @@ class Roster extends React.Component {
     }
 
     deleteAllStudents = () => {
-       
+
         let confirmDelete = window.confirm('Delete all Students?')
         if (confirmDelete) {
-        
-                  fetch(`${apiUrl}/all`, {
+
+            fetch(`${apiUrl}/all`, {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/json'
-                } 
-               
+                }
+
             })
                 .then(response => response.json())
                 .then(item => {
                     this.getItems();
                 })
                 .catch(err => console.log(err))
-        
-          
+
+
         }
     }
 
@@ -180,7 +183,7 @@ class Roster extends React.Component {
                                 <input type="number" className="form-control" id="cohort" name="cohort" placeholder="45" onChange={this.handleChange} value={this.state.cohort} required />
                             </div>
                             <div className="form-group">
-                                <label>Paste Student List Here</label>
+                                <label>Paste Student List Here (<a href="https://chegg-my.sharepoint.com/:x:/p/emma/EVfx_RaoHJ5Gh0bqFEfogOMBd3G7MwjOeqfg-s0GxUt2qQ?e=QS567v" target="_blank">Student Roster</a>)</label>
                                 <textarea className="form-control" id="studentList" rows="10" name="studentList" onChange={this.handleChange} value={this.state.studentList} />
                             </div>
                             <div className="form-group row">

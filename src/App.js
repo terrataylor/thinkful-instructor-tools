@@ -6,6 +6,7 @@ import Attendance from './components/Attendance/Attendance';
 import Organization from './components/Organization/Organization';
 import YamlGenerator from './components/YamlGenerator/YamlGenerator';
 import Resources from './components/Resources/Resources';
+import TicketCounter from './components/TicketCounter/TicketCounter'
 
 
 import {
@@ -21,7 +22,7 @@ function App() {
     <Router>
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light  justify-content-between">
-          <Link className="navbar-brand" to="/">Thinkful Instructor Apps</Link>
+          <button className="navbar-brand">Thinkful Instructor Apps</button>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -38,6 +39,9 @@ function App() {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" activeClassName="active" to="/organization">Github Org Invite Sender</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" activeClassName="active" to="/ticket">TicketCounter</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" activeClassName="active" to="/resources">Resources</NavLink>
@@ -63,6 +67,9 @@ function App() {
           </Route>
           <Route path="/roster">
             <Roster />
+          </Route>
+          <Route path="/ticket">
+            <TicketCounter />
           </Route>
           <Route path="/">
             <Roster />

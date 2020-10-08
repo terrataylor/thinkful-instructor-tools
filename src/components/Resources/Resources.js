@@ -59,24 +59,24 @@ class Resources extends React.Component {
                             <CardHeader>Useful Links</CardHeader>
                             <CardBody>
                                 <CardText>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://app.asana.com/">Asana (Keep track of Todos)</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://thinkful-ed.github.io/ei-cohort-start-checklist/">Cohort Launch Checklist1 (EI)</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/129sZIHXy6HepYzxIeELAyU59L7RxaUNaqg9OtACYGLc/edit#">Cohort Launch Checklist2 (EI)</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1p0mXIIIC68RCw4UgXLt3Z-ZsyY2eHM3XRlEqXv6ikX8/edit?ts=5ef21b21#gid=168336559">Cohort Staffing</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://github.com/Thinkful-Ed/full_time_career_path">Thinkful Github (Yamls, Syllabi & Master Syllabi)</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://chegg.sharepoint.com/sites/GOComm/Shared%20Documents/Forms/AllItems.aspx?originalPath=aHR0cHM6Ly9jaGVnZy5zaGFyZXBvaW50LmNvbS86Zjovcy9HT0NvbW0vRWxIa3hpdmJUODFObUV5OWo4RTVidmdCTnNTWENOX09Lcms4ZTFOLWFJOHEwZz9ydGltZT1vWFFQWHRsRjJFZw&id=%2Fsites%2FGOComm%2FShared%20Documents%2FThinkful%20Accessible%20Comms%2FZoom%20Webinar%20Documentations%2FZoomWebinars-CreatingZoomWebinars%2Epdf&parent=%2Fsites%2FGOComm%2FShared%20Documents%2FThinkful%20Accessible%20Comms%2FZoom%20Webinar%20Documentations">How to Create a Zoom Webinar</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://lark.thinkful.com/students/">Lark (see student dashboards/enrollment status)</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1_4sUKlpGaqynWpVW-DTE97RocVj2N0fmqWThkH_rT_s/edit#gid=0">Instructor Peer Review Sheet</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1I3qjTxLL1ONiK6v-ZAAOYScLLIDiTdRohY0wbpyglWw/edit#heading=h.xqnu31mn5s8b">Instructor Peer Review Instructions</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1SLQIdtcTj6qNUxcZeHdfMe4C7yHqGglxyIxnJ8HjtCU/edit?ts=5ef21b9d#gid=955836459">Student Roster</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://github.com/Thinkful-Ed/ei-shopping-list-solutions">Shopping List Starter Repo (EI)</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://thinkful.slides.com/users/sign_in">Slides</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://chegg-my.sharepoint.com/:f:/p/tauhida/EgpyabZsgy5Mhz8yuIBwc4IBahNn7lrwA366oyVmQ4NOlQ?e=CeunqK">Student Health Docs</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://lark.thinkful.com/courses/43/tickets/">Student Tickets (EI)</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://ftgen-trigger.herokuapp.com/">Syllabus Generator</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://dashboard.thinkful.com/">Thinkful Courses Dashboard (Information about courses, modules, grading ruberics and checkpoints)</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://chegg.atlassian.net/wiki/spaces/TFPED/pages/386075112/CMS+Content+Reader">Thinkful PED</a></div>
-                                    <div><a target="_blank" rel="noopener noreferrer" href="https://github.com/Thinkful-Ed/ei-sample-bookmarks-app">Thinkful Bookmarks App</a></div>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://app.asana.com/">Asana (Keep track of Todos)</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://thinkful-ed.github.io/ei-cohort-start-checklist/">Cohort Launch Checklist1 (EI)</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/129sZIHXy6HepYzxIeELAyU59L7RxaUNaqg9OtACYGLc/edit#">Cohort Launch Checklist2 (EI)</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1p0mXIIIC68RCw4UgXLt3Z-ZsyY2eHM3XRlEqXv6ikX8/edit?ts=5ef21b21#gid=168336559">Cohort Staffing</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Thinkful-Ed/full_time_career_path">Thinkful Github (Yamls, Syllabi & Master Syllabi)</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://chegg.sharepoint.com/sites/GOComm/Shared%20Documents/Forms/AllItems.aspx?originalPath=aHR0cHM6Ly9jaGVnZy5zaGFyZXBvaW50LmNvbS86Zjovcy9HT0NvbW0vRWxIa3hpdmJUODFObUV5OWo4RTVidmdCTnNTWENOX09Lcms4ZTFOLWFJOHEwZz9ydGltZT1vWFFQWHRsRjJFZw&id=%2Fsites%2FGOComm%2FShared%20Documents%2FThinkful%20Accessible%20Comms%2FZoom%20Webinar%20Documentations%2FZoomWebinars-CreatingZoomWebinars%2Epdf&parent=%2Fsites%2FGOComm%2FShared%20Documents%2FThinkful%20Accessible%20Comms%2FZoom%20Webinar%20Documentations">How to Create a Zoom Webinar</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://lark.thinkful.com/students/">Lark (see student dashboards/enrollment status)</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1_4sUKlpGaqynWpVW-DTE97RocVj2N0fmqWThkH_rT_s/edit#gid=0">Instructor Peer Review Sheet</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1I3qjTxLL1ONiK6v-ZAAOYScLLIDiTdRohY0wbpyglWw/edit#heading=h.xqnu31mn5s8b">Instructor Peer Review Instructions</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://chegg-my.sharepoint.com/:x:/p/emma/EVfx_RaoHJ5Gh0bqFEfogOMBd3G7MwjOeqfg-s0GxUt2qQ?e=QS567v">Student Roster</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Thinkful-Ed/ei-shopping-list-solutions">Shopping List Starter Repo (EI)</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://thinkful.slides.com/users/sign_in">Slides</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://chegg-my.sharepoint.com/:f:/p/tauhida/EgpyabZsgy5Mhz8yuIBwc4IBahNn7lrwA366oyVmQ4NOlQ?e=CeunqK">Student Health Docs</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://lark.thinkful.com/courses/43/tickets/">Student Tickets (EI)</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://ftgen-trigger.herokuapp.com/">Syllabus Generator</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://dashboard.thinkful.com/">Thinkful Courses Dashboard (Information about courses, modules, grading ruberics and checkpoints)</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://chegg.atlassian.net/wiki/spaces/TFPED/pages/386075112/CMS+Content+Reader">Thinkful PED</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Thinkful-Ed/ei-sample-bookmarks-app">Thinkful Bookmarks App</a></p>
 
 
                                 </CardText>
@@ -90,13 +90,13 @@ class Resources extends React.Component {
                             <CardHeader>Grading Ruberics</CardHeader>
                             <CardBody>
                                 <CardTitle tag='h5'>How to View a Ruberic</CardTitle>
-                                <CardText>
+                              
                                     <Player
                                         playsInline
                                         // poster="/assets/poster.png"
                                         src={rubericVideo}
                                     />
-                                </CardText>
+                               
                             </CardBody>
                         </Card>
 
@@ -107,8 +107,8 @@ class Resources extends React.Component {
                             <CardBody>
                                 <CardTitle tag='h5'>Impersonate a student to see checkpoint submissions</CardTitle>
                                 <CardText>(find student email from their dashboard) <p>How to impersonate a student: <a href="https://accounts.thinkful.com/admin/impersonate/student_email">Impersonate</a></p>
-                                    <p>Make sure you unimpersonate after you are done
-                                    <a href="https://accounts.thinkful.com/admin/unimpersonate">Unimpersonate</a></p>
+                                    <p>Make sure you unimpersonate after you are done 
+                                    <a href="https://accounts.thinkful.com/admin/unimpersonate"> Unimpersonate</a></p>
                                 </CardText>
                             </CardBody>
                         </Card>

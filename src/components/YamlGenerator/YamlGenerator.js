@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Container, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import apiUrl from '../../env';
+import avoidExample from '../../resources/avoid-example.png';
 class YamlGenerator extends React.Component {
     state = {
         students: [],
@@ -234,6 +235,12 @@ class YamlGenerator extends React.Component {
                             <div># /remind #ei-cohort{this.state.cohortNum} "TA support is available until 5:30 PM Eastern. Please submit tickets at least 15 minutes before EOD {this.state.slackHandles}" at 5PM {this.state.timeZone} every weekday.</div>
                         </div>
                     </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>   
+                    <h5>How to use avoid keyword to make sure students who have requested not to be paired with other students aren't paired.</h5>
+                            <img src={avoidExample} alt="example of avoid function"/>
                     </Col>
                 </Row>
 

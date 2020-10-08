@@ -1,11 +1,12 @@
 import React from "react";
-import { Table, Button, Container } from 'reactstrap';
-import apiUrl from '../../env'
+import { Table, Button, Container, FormGroup, Label, Input } from 'reactstrap';
+import apiUrl from '../../env';
 
 class Organization extends React.Component {
     state = {
         students: [],
-        token: ''
+        token: '', 
+        error:''
     }
 
     componentDidMount() {
@@ -25,40 +26,46 @@ class Organization extends React.Component {
     componentWillUnmount() {
 
     }
-
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
     inviteAll() {
         let sentStudents = [];
-        if (this.state.students.length > 0) {
+        console.log(this.state)
+        if (this.state.students.length > 0 && this.state.token !== '') {
             this.state.students.forEach(student => {
                 fetch(`https://api.github.com/orgs/${student.githuborg}/invitations?access_token=${this.state.token}`, {
-                    method: 'post',
-                    body: JSON.stringify({
-                        "email": student.email,
-                        "role": "direct_member"
-                    })
-                }).then(data => {
-                    if (data.ok) {
-                        console.log(student)
-                        student.invite = "yes";
-
-                    } else {
-                        student.invite = "no";
-                    }
-                    sentStudents.push(student);
-                    console.log(sentStudents);
-                    this.setState({ students: sentStudents })
-                }).catch((error) => {
-                    console.error('Error:', error);
-                });
+                     method: 'post',
+                     body: JSON.stringify({
+                         "email": student.email,
+                         "role": "direct_member"
+                     })
+                 }).then(data => {
+                     if (data.ok) {
+                         console.log(student)
+                         student.invite = "yes";
+ 
+                     } else {
+                         student.invite = "no";
+                     }
+                     sentStudents.push(student);
+                     console.log(sentStudents);
+                     this.setState({ students: sentStudents })
+                 }).catch((error) => {
+                     console.error('Error:', error);
+                 });
             })
+        } else{
+            this.setState({error:"Please Enter your github Token"})
         }
     }
 
-    inviteOne(githubOrg,email){
-       /* fetch(`https://api.github.com/orgs/${githubOrg}/invitations?access_token=${this.state.token}`, {
+    inviteOne(student) {
+        let sentStudents = [];
+        fetch(`https://api.github.com/orgs/${student.githuborg}/invitations?access_token=${this.state.token}`, {
             method: 'post',
             body: JSON.stringify({
-                "email": email,
+                "email": student.email,
                 "role": "direct_member"
             })
         }).then(data => {
@@ -74,7 +81,7 @@ class Organization extends React.Component {
             this.setState({ students: sentStudents })
         }).catch((error) => {
             console.error('Error:', error);
-        });*/
+        });
     }
 
     render() {
@@ -82,14 +89,14 @@ class Organization extends React.Component {
         if (this.state.students.length > 0) {
             items = this.state.students.map(item => {
                 console.log(item)
-                let invite="";
+                let invite = "";
                 console.log(item.invite);
-                if(item.invite==="yes"){
+                if (item.invite === "yes") {
                     invite = (<td>{item.invite} </td>);
-                } else{
+                } else {
                     invite = (<td><Button color="primary" onClick={() => this.inviteOne(item)}>Resend</Button></td>);
                 }
-           
+
                 return (
                     <tr key={item.id}>
                         <th scope="row">{item.id}</th>
@@ -105,7 +112,17 @@ class Organization extends React.Component {
         }
         return (
             <Container>
-                <h2>Organization</h2>     <Button color="primary" onClick={() => this.inviteAll()}>Invite All</Button>
+                <h2>Organization</h2>
+                <FormGroup>
+                    <Label for="token">Github Token</Label>
+                    <Input type="text" name="token" id="token" onChange={this.onChange} value={this.state.token} />
+                </FormGroup>
+                {this.state.error !== '' && 
+                <div className="alert alert-danger" role="alert">
+                    {this.state.error}
+                </div>
+                }
+                <Button color="primary" onClick={() => this.inviteAll()}>Invite All</Button>
                 <Table responsive hover>
                     <thead>
                         <tr>
