@@ -42,10 +42,8 @@ class Resources extends React.Component {
                             <CardBody>
                                 <CardTitle tag='h5'>Careers/Mentors/ASMs</CardTitle>
                                 <CardText>Emma Holland (@Emma Holland) Synchronous Programs Operations Manager</CardText>
-                                <CardTitle tag='h5'>Interviews</CardTitle>
+                                <CardTitle tag='h5'>Interviews & TA Staffing</CardTitle>
                                 <CardText>Derrick Foust (@Derrick Foust) Senior Educator Success Manager</CardText>
-                                <CardTitle tag='h5'>TA Staffing</CardTitle>
-                                <CardText>Kelly Kawa (@Kelly Kawa) Senior Educator Experience Manager</CardText>
                                 <CardTitle tag='h5'>Syllabus Generation</CardTitle>
                                 <CardText>Joe Turner (@Joe Turner) Lead Instructor</CardText>
                                 <CardTitle tag='h5'>Syllabus Generation</CardTitle>
@@ -60,6 +58,7 @@ class Resources extends React.Component {
                             <CardBody>
                                 <CardText>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://app.asana.com/">Asana (Keep track of Todos)</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://chegg-portal1.sharepoint.com/default.aspx">Chegg Company Calendar</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://thinkful-ed.github.io/ei-cohort-start-checklist/">Cohort Launch Checklist1 (EI)</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/129sZIHXy6HepYzxIeELAyU59L7RxaUNaqg9OtACYGLc/edit#">Cohort Launch Checklist2 (EI)</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1p0mXIIIC68RCw4UgXLt3Z-ZsyY2eHM3XRlEqXv6ikX8/edit?ts=5ef21b21#gid=168336559">Cohort Staffing</a></p>

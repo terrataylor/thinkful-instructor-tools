@@ -35,8 +35,9 @@ class Attendance extends React.Component {
              let lname = student.lname.toLowerCase();
              let name = `${fname} ${lname}`;
            let preferredname= student.preferredname !== undefined ? student.preferredname :"";
+           let attendance = this.compareToChat(chat,fname,lname,preferredname)
             if (name !== "") {
-                if (chat.includes(name) || chat.includes(fname) || chat.includes(student.fname)|| chat.includes(preferredname)) {
+                if (attendance) {
                     attendanceArray.push({ id: student.id, name: name, present: "x" })
                 } else {
                     attendanceArray.push({ id: student.id, name: name, present: " " });
@@ -44,12 +45,25 @@ class Attendance extends React.Component {
                 }
             }
         }
-        //this.generateNotifications(notificationArr);
-
-        
-        console.log(attendanceArray)
         this.setState({ attendenceRecord: attendanceArray,absences:notificationArr });
-        console.log(attendanceArray);
+    }
+
+    compareToChat=(chat,...studentNames)=>{
+        let chatlines = chat.split('\n');
+        let nameFound = false;
+        chatlines.forEach(line=>{
+            for(let i=0; i<studentNames.length; i++){
+                
+             if(studentNames[i]){
+                let studentName = studentNames[i].trim();
+                if(line.includes(studentName)){
+                   nameFound= true;
+                }
+            }
+            }
+
+        })
+       return nameFound;
     }
 
     addItemToState = (student) => {
@@ -101,7 +115,7 @@ class Attendance extends React.Component {
                 }
                 return 0;
                 });
-                console.log(students)
+               // console.log(students)
                 this.setState({ students })
             })
             .catch(err => console.log(err))
@@ -142,18 +156,18 @@ class Attendance extends React.Component {
         let absences = '';
         let students='';
         if (this.state.absences.length > 0) {
-            absences = this.state.absences.map(item => {
-                console.log(item)
+            absences = this.state.absences.map((item,idx) => {
+              //  console.log(item)
                 let staffStatement = `@${item.asm} ${item.fname} ${item.lname} was absent from session today. I have asked them to submit an absence request.`;
                 return (
-                   <div>{staffStatement}</div>
+                   <div key={idx}>{staffStatement}</div>
                 )
             })
-            students = this.state.absences.map(item => {
-                console.log(item)
+            students = this.state.absences.map((item,idx) => {
+              //  console.log(item)
                 let studentStatement = `${item.slack} Please submit an absence request for today's session. http://bit.ly/AbsenceRequests`;
                 return (
-                   <div>{studentStatement}</div>
+                   <div key={idx}>{studentStatement}</div>
                 )
             })
         }
