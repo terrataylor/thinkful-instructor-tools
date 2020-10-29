@@ -46,11 +46,17 @@ class Resources extends React.Component {
                                 <CardText>Derrick Foust (@Derrick Foust) Senior Educator Success Manager</CardText>
                                 <CardTitle tag='h5'>Syllabus Generation</CardTitle>
                                 <CardText>Joe Turner (@Joe Turner) Lead Instructor</CardText>
-                                <CardTitle tag='h5'>Syllabus Generation</CardTitle>
-                                <CardText>Joe Turner (@Joe Turner) Lead Instructor</CardText>
+                                <CardTitle tag='h5'>Curriculum updates</CardTitle>
+                                <CardText>Rush Cosgrove & Daphne Isom</CardText>
                             </CardBody>
                         </Card>
-
+                        <Card>
+                            <CardHeader>Curriculum Writing Resources</CardHeader>
+                            <CardBody>
+                                <p><a target="_blank" rel="noopener noreferrer" href="https://www.loom.com/share/16d0e8700eb346509ef79ea95a0ef7e0">How to begin your review</a></p>
+                                <p><a target="_blank" rel="noopener noreferrer" href="https://www.loom.com/share/6e309058a8354c50b758905df94d768e">How to submit a review via PR or issue</a></p>
+                            </CardBody>
+                        </Card>
                     </Col>
                     <Col>
                         <Card>
@@ -89,13 +95,13 @@ class Resources extends React.Component {
                             <CardHeader>Grading Ruberics</CardHeader>
                             <CardBody>
                                 <CardTitle tag='h5'>How to View a Ruberic</CardTitle>
-                              
-                                    <Player
-                                        playsInline
-                                        // poster="/assets/poster.png"
-                                        src={rubericVideo}
-                                    />
-                               
+
+                                <Player
+                                    playsInline
+                                    // poster="/assets/poster.png"
+                                    src={rubericVideo}
+                                />
+
                             </CardBody>
                         </Card>
 
@@ -106,7 +112,7 @@ class Resources extends React.Component {
                             <CardBody>
                                 <CardTitle tag='h5'>Impersonate a student to see checkpoint submissions</CardTitle>
                                 <CardText>(find student email from their dashboard) <p>How to impersonate a student: <a href="https://accounts.thinkful.com/admin/impersonate/student_email">Impersonate</a></p>
-                                    <p>Make sure you unimpersonate after you are done 
+                                    <p>Make sure you unimpersonate after you are done
                                     <a href="https://accounts.thinkful.com/admin/unimpersonate"> Unimpersonate</a></p>
                                 </CardText>
                             </CardBody>
