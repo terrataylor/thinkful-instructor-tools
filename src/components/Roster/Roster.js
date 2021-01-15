@@ -36,24 +36,24 @@ class Roster extends React.Component {
             {
                 fname: arr[0],
                 lname: arr[1],
-                email: arr[2],
-                asm: arr[3],
-                location: `${arr[5]},${formattedState}`,
-                paymentplan: arr[8] ? arr[8]:'',
+                paymentplan: arr[3] ? arr[3]:'',                
+                asm: arr[5],
+                slack: arr[7],
+                email: arr[8],
                 cohort: cohort,
                 githuborg: githuborg
             };
             //Getting slack handle
-            if (arr[9] && arr[9].includes("@")) {
+            /*if (arr[9] && arr[9].includes("@")) {
                 studentObj.slack = arr[9];
             } else {
                 studentObj.slack = arr[10]
-            }
+            }*/
             console.log(studentObj);
             //getting payment plan
-            if (arr[7] && (arr[7].includes("isa_stipend") || arr[7].includes("isa") || arr[7].includes("m2m") || arr[7].includes("loan") || arr[7].includes("upfront"))) {
+           /* if (arr[7] && (arr[7].includes("isa_stipend") || arr[7].includes("isa") || arr[7].includes("m2m") || arr[7].includes("loan") || arr[7].includes("upfront"))) {
                 studentObj.paymentplan = arr[7];
-            }
+            */
             formattedStudents.push(studentObj);
         }
         formattedStudents.sort((a, b) => {
@@ -86,7 +86,7 @@ class Roster extends React.Component {
                 preferredname: student.preferredname,
                 email: student.email,
                 asm: student.asm,
-                location: student.location,
+            //    location: student.location,
                 slack: student.slack,
                 paymentplan: student.paymentplan,
                 cohort: student.cohort,
