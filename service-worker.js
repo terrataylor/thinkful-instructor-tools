@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/thinkful-instructor-tools/precache-manifest.eb82852b2650ad908018a26e2f380ee3.js"
+  "/thinkful-instructor-tools/precache-manifest.86f51fd5bde2a0b222dd22fcedafb772.js"
 );
 
 self.addEventListener('message', (event) => {
