@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fb33e085727994c37abf494028239986",
+    "revision": "142e65c2b56cde258230b96e6feeac68",
     "url": "/thinkful-instructor-tools/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/thinkful-instructor-tools/static/css/2.8186207c.chunk.css"
   },
   {
-    "revision": "2a374ad08777c7994bfd",
+    "revision": "444ce4aee9a3ddb4508a",
     "url": "/thinkful-instructor-tools/static/css/main.2b5ba7ed.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/thinkful-instructor-tools/static/js/2.77b3798e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2a374ad08777c7994bfd",
-    "url": "/thinkful-instructor-tools/static/js/main.e71fa603.chunk.js"
+    "revision": "444ce4aee9a3ddb4508a",
+    "url": "/thinkful-instructor-tools/static/js/main.cbc7f1ef.chunk.js"
   },
   {
     "revision": "791359d46ec6e22fc8ec",

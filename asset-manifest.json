@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/thinkful-instructor-tools/static/css/main.2b5ba7ed.chunk.css",
-    "main.js": "/thinkful-instructor-tools/static/js/main.e71fa603.chunk.js",
-    "main.js.map": "/thinkful-instructor-tools/static/js/main.e71fa603.chunk.js.map",
+    "main.js": "/thinkful-instructor-tools/static/js/main.cbc7f1ef.chunk.js",
+    "main.js.map": "/thinkful-instructor-tools/static/js/main.cbc7f1ef.chunk.js.map",
     "runtime-main.js": "/thinkful-instructor-tools/static/js/runtime-main.84a842fe.js",
     "runtime-main.js.map": "/thinkful-instructor-tools/static/js/runtime-main.84a842fe.js.map",
     "static/css/2.8186207c.chunk.css": "/thinkful-instructor-tools/static/css/2.8186207c.chunk.css",
     "static/js/2.77b3798e.chunk.js": "/thinkful-instructor-tools/static/js/2.77b3798e.chunk.js",
     "static/js/2.77b3798e.chunk.js.map": "/thinkful-instructor-tools/static/js/2.77b3798e.chunk.js.map",
     "index.html": "/thinkful-instructor-tools/index.html",
-    "precache-manifest.86f51fd5bde2a0b222dd22fcedafb772.js": "/thinkful-instructor-tools/precache-manifest.86f51fd5bde2a0b222dd22fcedafb772.js",
+    "precache-manifest.f02511e0dd4315100f932330acf278e3.js": "/thinkful-instructor-tools/precache-manifest.f02511e0dd4315100f932330acf278e3.js",
     "service-worker.js": "/thinkful-instructor-tools/service-worker.js",
     "static/css/2.8186207c.chunk.css.map": "/thinkful-instructor-tools/static/css/2.8186207c.chunk.css.map",
     "static/css/main.2b5ba7ed.chunk.css.map": "/thinkful-instructor-tools/static/css/main.2b5ba7ed.chunk.css.map",
@@ -22,6 +22,6 @@
     "static/css/2.8186207c.chunk.css",
     "static/js/2.77b3798e.chunk.js",
     "static/css/main.2b5ba7ed.chunk.css",
-    "static/js/main.e71fa603.chunk.js"
+    "static/js/main.cbc7f1ef.chunk.js"
   ]
 }
