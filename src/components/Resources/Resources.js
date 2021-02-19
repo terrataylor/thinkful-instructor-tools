@@ -80,10 +80,13 @@ class Resources extends React.Component {
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://lark.thinkful.com/courses/43/tickets/">Student Tickets (EI)</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://ftgen-trigger.herokuapp.com/">Syllabus Generator</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://student-auditor.herokuapp.com/">Student Auditor</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://chegg-my.sharepoint.com/:x:/r/personal/tauhida_chegg_com/_layouts/15/guestaccess.aspx?share=ETwzAHpJQrdDvccTzrF9hDIB_-7wY3xo9ARL3FtoG2l6bA">Audit Spreadsheet</a></p>
+                                    
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://dashboard.thinkful.com/">Thinkful Courses Dashboard (Information about courses, modules, grading ruberics and checkpoints)</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://chegg.atlassian.net/wiki/spaces/TFPED/pages/386075112/CMS+Content+Reader">Thinkful PED</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Thinkful-Ed/ei-sample-bookmarks-app">Thinkful Bookmarks App</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://chegg.sharepoint.com/sites/InstructionalDesign/SitePages/Curriculum%20Feedback%20and%20Project%20Requests.aspx">Put in Tickets about Qualified.io and Curriculum</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://chegg.atlassian.net/wiki/spaces/TFPED/pages/175412174/Bugs+Cleanup">Put in Tickets about Sessions</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://chegg-my.sharepoint.com/personal/ttaylor_chegg_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fttaylor%5Fchegg%5Fcom%2FDocuments%2FCohort49Polls&originalPath=aHR0cHM6Ly9jaGVnZy1teS5zaGFyZXBvaW50LmNvbS86ZjovcC90dGF5bG9yL0VxRDVmaUdKaFhWQmlzYmtVYWF0ODZNQkFzYm0wUHdLc3BFR056cHBJMjJrbFE_cnRpbWU9YjdpRHlwWEgyRWc">Upload Poll Results</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://gist.github.com/oampo/da53e70f798dccc9923616d000c820ff">Decoder Capstone</a></p>
 

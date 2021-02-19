@@ -29,17 +29,16 @@ class Roster extends React.Component {
         let formattedStudents = [];
         for (let i = 0; i < studentsArr.length; i++) {
             let arr = studentsArr[i].split(",");
-            let state = arr[6];
-            let formattedState = state.replace(';not started;', '').replace(';hidden from queue', '').replace('ENROLLED', '').replace('unmatched;', '').replace('undefined', '');
-
+            console.log(arr);
+          
             let studentObj =
             {
                 fname: arr[0],
                 lname: arr[1],
-                paymentplan: arr[3] ? arr[3]:'',                
-                asm: arr[5],
-                slack: arr[7],
-                email: arr[8],
+                paymentplan: arr[5] ? arr[5]:'',                
+                asm: '',
+                slack: '',
+                email: arr[3],
                 cohort: cohort,
                 githuborg: githuborg
             };
@@ -86,7 +85,7 @@ class Roster extends React.Component {
                 preferredname: student.preferredname,
                 email: student.email,
                 asm: student.asm,
-            //    location: student.location,
+                location: '',
                 slack: student.slack,
                 paymentplan: student.paymentplan,
                 cohort: student.cohort,

@@ -35,7 +35,7 @@ class Attendance extends React.Component {
              let lname = student.lname.toLowerCase();
              let name = `${fname} ${lname}`;
            let preferredname= student.preferredname !== undefined ? student.preferredname :"";
-           let attendance = this.compareToChat(chat,fname,lname,preferredname)
+           let attendance = this.compareToChat(chat,name,preferredname)
             if (name !== "") {
                 if (attendance) {
                     attendanceArray.push({ id: student.id, name: name, present: "x" })
