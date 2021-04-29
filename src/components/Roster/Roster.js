@@ -28,31 +28,16 @@ class Roster extends React.Component {
         let { cohort, githuborg } = this.state;
         let formattedStudents = [];
         for (let i = 0; i < studentsArr.length; i++) {
-            let arr = studentsArr[i].split(",");
-            console.log(arr);
-          
+            let arr = studentsArr[i].split(",");          
             let studentObj =
             {
                 fname: arr[0],
-                lname: arr[1],
-                paymentplan: arr[5] ? arr[5]:'',                
-                asm: '',
-                slack: '',
-                email: arr[3],
+                lname: arr[1],                
+                slack: arr[6],
+                email: arr[5],
                 cohort: cohort,
                 githuborg: githuborg
             };
-            //Getting slack handle
-            /*if (arr[9] && arr[9].includes("@")) {
-                studentObj.slack = arr[9];
-            } else {
-                studentObj.slack = arr[10]
-            }*/
-            console.log(studentObj);
-            //getting payment plan
-           /* if (arr[7] && (arr[7].includes("isa_stipend") || arr[7].includes("isa") || arr[7].includes("m2m") || arr[7].includes("loan") || arr[7].includes("upfront"))) {
-                studentObj.paymentplan = arr[7];
-            */
             formattedStudents.push(studentObj);
         }
         formattedStudents.sort((a, b) => {
@@ -60,6 +45,7 @@ class Roster extends React.Component {
             var textB = b.fname.toUpperCase();
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
         });
+        
         formattedStudents.forEach(student => {
             this.addToDB(student);
         })
