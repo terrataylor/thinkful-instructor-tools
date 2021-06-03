@@ -38,10 +38,7 @@ class DataTable extends Component {
                         <td>{item.lname}</td>
                         <td>{item.preferredname}</td>
                         <td>{item.email}</td>
-                        <td>{item.asm}</td>
-                        <td>{item.location}</td>
                         <td>{item.slack}</td>
-                        <td>{item.paymentplan}</td>
                         <td>{item.cohort}</td>
                         <td>
                             <div style={{ width: "110px" }}>
@@ -64,10 +61,7 @@ class DataTable extends Component {
                         <th>Last</th>
                         <th>Preferred Name</th>
                         <th>Email</th>
-                        <th>ASM</th>
-                        <th>Location</th>
                         <th>Slack</th>
-                        <th>Payment Type</th>
                         <th>Cohort</th>
                         <th>Modify</th>
                     </tr>

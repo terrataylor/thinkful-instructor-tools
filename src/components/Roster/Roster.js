@@ -29,17 +29,19 @@ class Roster extends React.Component {
         let formattedStudents = [];
         for (let i = 0; i < studentsArr.length; i++) {
             let arr = studentsArr[i].split(",");          
-            let studentObj =
+            let email = arr[2].replace('https://lark.thinkful.com/students/','');
+             let studentObj =
             {
                 fname: arr[0],
                 lname: arr[1],                
-                slack: arr[6],
-                email: arr[5],
+                slack: arr[5],
+                email: email,
                 cohort: cohort,
                 githuborg: githuborg
             };
             formattedStudents.push(studentObj);
         }
+        console.log(formattedStudents);
         formattedStudents.sort((a, b) => {
             var textA = a.fname.toUpperCase();
             var textB = b.fname.toUpperCase();

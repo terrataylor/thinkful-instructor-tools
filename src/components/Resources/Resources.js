@@ -40,8 +40,10 @@ class Resources extends React.Component {
                         <Card>
                             <CardHeader>Points of Contact</CardHeader>
                             <CardBody>
-                                <CardTitle tag='h5'>Careers/Mentors/ASMs/Student's who can't put in a ticket</CardTitle>
-                                <CardText>Emma Holland (@Emma Holland) Synchronous Programs Operations Manager</CardText>
+                                <CardTitle tag='h5'>Careers/Mentors/ASMs</CardTitle>
+                                <CardText>Caitlin Plaza (@Caitlin Plaza) Synchronous Programs Operations Manager</CardText>
+                                <CardTitle tag='h5'>Student's who can't put in a ticket</CardTitle>
+                                <CardText>Cali Stephens (@Cali Stephens) Synchronous Programs Operations Manager</CardText>
                                 <CardTitle tag='h5'>Interviews & TA Staffing</CardTitle>
                                 <CardText>Derrick Foust (@Derrick Foust) Senior Educator Success Manager</CardText>
                                 <CardTitle tag='h5'>Syllabus Generation</CardTitle>
