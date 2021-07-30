@@ -41,13 +41,13 @@ class Resources extends React.Component {
                             <CardHeader>Points of Contact</CardHeader>
                             <CardBody>
                                 <CardTitle tag='h5'>Careers/Mentors/ASMs</CardTitle>
-                                <CardText>Caitlin Plaza (@Caitlin Plaza) Synchronous Programs Operations Manager</CardText>
+                                <CardText>Alanna Ellis & Ashley Murry (ASMs)</CardText>
                                 <CardTitle tag='h5'>Student's who can't put in a ticket</CardTitle>
-                                <CardText>Cali Stephens (@Cali Stephens) Synchronous Programs Operations Manager</CardText>
+                                <CardText>Alexandra Taylor (@Alexandra Taylor) Synchronous Programs Operations Manager</CardText>
                                 <CardTitle tag='h5'>Interviews & TA Staffing</CardTitle>
                                 <CardText>Derrick Foust (@Derrick Foust) Senior Educator Success Manager</CardText>
-                                <CardTitle tag='h5'>Syllabus Generation</CardTitle>
-                                <CardText>Joe Turner (@Joe Turner) Lead Instructor</CardText>
+                                <CardTitle tag='h5'>Syllabus Generation & Student Auditor</CardTitle>
+                                <CardText>Richard Greenhill</CardText>
                                 <CardTitle tag='h5'>Curriculum updates</CardTitle>
                                 <CardText>Rush Cosgrove & Daphne Isom</CardText>
                             </CardBody>

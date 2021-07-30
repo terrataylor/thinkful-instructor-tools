@@ -24,6 +24,7 @@ class YamlGenerator extends React.Component {
     studentList: ` `,
     rewriteInputPath: true,
     slackHandles: "",
+    organization:''
   };
 
   componentDidMount() {
@@ -138,6 +139,16 @@ class YamlGenerator extends React.Component {
             />
           </FormGroup>
           <FormGroup>
+            <Label for="organization">Organization</Label>
+            <Input
+              type="text"
+              name="organization"
+              id="organization"
+              onChange={this.onChange}
+              defaultValue="monkeys"
+            />
+          </FormGroup>
+          <FormGroup>
             <Label for="startDate">Start Date</Label>
             <Input
               type="date"
@@ -246,14 +257,14 @@ class YamlGenerator extends React.Component {
                 <div className="students-yaml">{this.state.students}</div>
               </div>
               <div></div>
-              {this.state.rewriteInputPath === true && (
+              {/*this.state.rewriteInputPath === true && (
                 <div>
                   flags:
                   <div>&nbsp;&nbsp;rewriteInputPath:</div>
                   <div>&nbsp;&nbsp;&nbsp;&nbsp;from: master-syllabus</div>
                   <div>&nbsp;&nbsp;&nbsp;&nbsp;to: master-syllabus-groups</div>
                 </div>
-              )}
+              )*/}
               <div>oddStudent: solo</div>
               <div>startDate: {this.state.startDate}</div>
               <div>workshopUrl: {this.state.workshopUrl}</div>
@@ -267,17 +278,15 @@ class YamlGenerator extends React.Component {
                   <strong># Slack /remind command for morning Workshop</strong>
                 </div>
                 <div>
-                  # /remind #ei-cohort{this.state.cohortNum} "It's time for our
-                  morning workshop: {this.state.workshopUrl}{" "}
-                  {this.state.slackHandles}" at 10AM {this.state.timeZone} every
+                  # /remind #ei-{this.state.startDate} "It's time for our
+                  morning workshop: {this.state.workshopUrl}{" "}" at 10AM {this.state.timeZone} every
                   weekday.
                 </div>
                 <div>
                   <strong># Slack /remind command for Lunch</strong>
                 </div>
                 <div>
-                  # /remind #ei-cohort{this.state.cohortNum} "Lunch Time!{" "}
-                  {this.state.slackHandles}" at 12:45PM {this.state.timeZone}{" "}
+                  # /remind #ei-{this.state.startDate} "Lunch Time!{" "}" at 12:45PM {this.state.timeZone}{" "}
                   every weekday.
                 </div>
                 <div>
@@ -286,25 +295,24 @@ class YamlGenerator extends React.Component {
                   </strong>
                 </div>
                 <div>
-                  # /remind #ei-cohort{this.state.cohortNum} "It's time for our
-                  afternoon workshop: {this.state.workshopUrl}{" "}
-                  {this.state.slackHandles}" at 1:30PM {this.state.timeZone}{" "}
+                  # /remind #ei-{this.state.startDate} "It's time for our
+                  afternoon workshop: {this.state.workshopUrl}{" "}" at 1:30PM {this.state.timeZone}{" "}
                   every weekday.
                 </div>
                 <div>
                   <strong># Slack /remind command for end of TA session</strong>
                 </div>
                 <div>
-                  # /remind #ei-cohort{this.state.cohortNum} "TA support is
+                  # /remind #ei-{this.state.startDate} "TA support is
                   available until 5:30 PM Eastern. Please submit tickets at
-                  least 15 minutes before EOD {this.state.slackHandles}" at 5PM{" "}
+                  least 15 minutes before EOD" at 5PM{" "}
                   {this.state.timeZone} every weekday.
                 </div>
               </div>
               <div className="welcome">
                 <p>Hello and welcome to Engineering Immersion!</p>
                 <p>
-                  I will be your instructor for the first 3 weeks of your
+                  I will be your instructor for the first 6 weeks of your
                   program. The first week of your syllabus has now been posted,
                   and you may find it by looking at your student dashboards.
                   Please pay special attention to all items posted on Sunday's
@@ -317,11 +325,11 @@ class YamlGenerator extends React.Component {
                 </p>
                 <p>
                   Please accept your invitations to join your cohort's Github
-                  Organization at https://github.com/thinkful-ei-xolo. I will
+                  Organization at https://github.com/thinkful-ei-{this.state.organization}. I will
                   post coding examples here that we discuss in class. If you
                   don't see your invite, it may be in your spam folder. You can
                   also directly accept your invitation at
-                  https://github.com/thinkful-ei-xolo. If you cannot locate your
+                  https://github.com/thinkful-ei-{this.state.organization}. If you cannot locate your
                   invite or are unable to join the organization - please respond
                   to this message by sending me your Github handle.
                 </p>
