@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Button, Container, FormGroup, Label, Input } from 'reactstrap';
 import apiUrl from '../../env';
-
+//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
 class Organization extends React.Component {
     state = {
         students: [],
@@ -35,8 +35,11 @@ class Organization extends React.Component {
         if (this.state.students.length > 0 && this.state.token !== '') {
             this.state.students.forEach(student => {
                 setTimeout(()=>{
-                fetch(`https://api.github.com/orgs/${student.githuborg}/invitations?access_token=${this.state.token}`, {
+                fetch(`https://api.github.com/orgs/${student.githuborg}/invitations`, {
                      method: 'post',
+                     headers:{
+                        'Authorization': `token ${this.state.token}`
+                    },
                      body: JSON.stringify({
                          "email": student.email,
                          "role": "direct_member"
@@ -64,8 +67,11 @@ class Organization extends React.Component {
 
     inviteOne(student) {
         let sentStudents = [];
-        fetch(`https://api.github.com/orgs/${student.githuborg}/invitations?access_token=${this.state.token}`, {
+        fetch(`https://api.github.com/orgs/${student.githuborg}/invitations`, {
             method: 'post',
+            headers:{
+                'Authorization': `token ${this.state.token}`
+            },
             body: JSON.stringify({
                 "email": student.email,
                 "role": "direct_member"
