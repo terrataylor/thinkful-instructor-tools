@@ -7,6 +7,7 @@ import Organization from './components/Organization/Organization';
 import YamlGenerator from './components/YamlGenerator/YamlGenerator';
 import Resources from './components/Resources/Resources';
 import TicketCounter from './components/TicketCounter/TicketCounter'
+import TeamGenerator from './components/TeamGenerator/TeamGenerator';
 
 
 import {
@@ -41,6 +42,9 @@ function App() {
                 <NavLink className="nav-link" activeClassName="active" to="/organization">Github Org Invite Sender</NavLink>
               </li>
               <li className="nav-item">
+                <NavLink className="nav-link" activeClassName="active" to="/teamgenerator">Team Generator</NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink className="nav-link" activeClassName="active" to="/ticket">TicketCounter</NavLink>
               </li>
               <li className="nav-item">
@@ -71,9 +75,13 @@ function App() {
           <Route path="/ticket">
             <TicketCounter />
           </Route>
+          <Route path="/teamgenerator">
+            <TeamGenerator />
+          </Route>
           <Route path="/">
             <Roster />
           </Route>
+        
         </Switch>
       </div>
     </Router>
