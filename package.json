@@ -2,7 +2,7 @@
   "name": "instructor-tools",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://terrataylor.github.io/thinkful-instructor-tools/",
+  "homepage": "https://terrataylor.github.io/thinkful-instructor-tools",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",

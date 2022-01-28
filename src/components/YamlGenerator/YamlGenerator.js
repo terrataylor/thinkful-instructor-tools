@@ -15,20 +15,23 @@ class YamlGenerator extends React.Component {
   state = {
     students: [],
     courseCode: "dev-301",
-    cohortNum: 57,
+    cohortNum: 58,
     startDate: "",
-    workshopUrl: "https://rebrand.ly/ei57workshop",
+    workshopUrl: "https://rebrand.ly/${workshop",
     timeZone: "EST",
     breakWeek1: 5,
     breakWeek2: 13,
     studentList: ` `,
     rewriteInputPath: true,
     slackHandles: "",
-    organization:''
+    organization: "",
   };
 
   componentDidMount() {
     this.getItems();
+    this.setState({
+      workshopUrl: `https://rebrand.ly/${this.state.cohortNum}workshop`,
+    });
   }
   getItems() {
     fetch(apiUrl)
@@ -86,7 +89,11 @@ class YamlGenerator extends React.Component {
       }
     }
     console.log(output);
-    this.setState({ students: output });
+    let date= new Date(this.state.startDate);
+    let [month, day, year] = new Date(this.state.startDate).toLocaleDateString("en-US").split("/");
+    let formattedDate = `${month-10? '0'+month: month}-${parseInt(day)+1}-${year.substring(2)}`;
+    console.log(formattedDate)
+    this.setState({ students: output, startDate:formattedDate });
   };
 
   checkIfDups(firstName, list) {
@@ -135,7 +142,7 @@ class YamlGenerator extends React.Component {
               name="cohortNum"
               id="cohortNum"
               onChange={this.onChange}
-              defaultValue="46"
+              defaultValue="58"
             />
           </FormGroup>
           <FormGroup>
@@ -145,7 +152,7 @@ class YamlGenerator extends React.Component {
               name="organization"
               id="organization"
               onChange={this.onChange}
-              defaultValue="monkeys"
+              defaultValue="falcon"
             />
           </FormGroup>
           <FormGroup>
@@ -278,16 +285,16 @@ class YamlGenerator extends React.Component {
                   <strong># Slack /remind command for morning Workshop</strong>
                 </div>
                 <div>
-                  # /remind #ei-{this.state.startDate} "It's time for our
-                  morning workshop: {this.state.workshopUrl}{" "}" at 10AM {this.state.timeZone} every
-                  weekday.
+                  # /remind #ei-{this.state.startDate} "Morning workshop
+                  starting in 10 minutes - {this.state.workshopUrl}" at 9:50AM{" "}
+                  {this.state.timeZone} every weekday.
                 </div>
                 <div>
                   <strong># Slack /remind command for Lunch</strong>
                 </div>
                 <div>
-                  # /remind #ei-{this.state.startDate} "Lunch Time!{" "}" at 12:45PM {this.state.timeZone}{" "}
-                  every weekday.
+                  # /remind #ei-{this.state.startDate} "Lunch Time!" at 12:45PM{" "}
+                  {this.state.timeZone} every weekday.
                 </div>
                 <div>
                   <strong>
@@ -295,18 +302,30 @@ class YamlGenerator extends React.Component {
                   </strong>
                 </div>
                 <div>
-                  # /remind #ei-{this.state.startDate} "It's time for our
-                  afternoon workshop: {this.state.workshopUrl}{" "}" at 1:30PM {this.state.timeZone}{" "}
-                  every weekday.
+                  # /remind #ei-{this.state.startDate} "Afternoon session
+                  starting in 10 minutes - {this.state.workshopUrl}" at 1:20PM{" "}
+                  {this.state.timeZone} every weekday
                 </div>
                 <div>
                   <strong># Slack /remind command for end of TA session</strong>
                 </div>
                 <div>
-                  # /remind #ei-{this.state.startDate} "TA support is
-                  available until 5:30 PM Eastern. Please submit tickets at
-                  least 15 minutes before EOD" at 5PM{" "}
-                  {this.state.timeZone} every weekday.
+                  # /remind #ei-{this.state.startDate} "TA support is available
+                  until 5 PM Eastern. Please submit tickets at least 15
+                  minutes before EOD" at 4:30PM {this.state.timeZone} every
+                  weekday
+                </div>
+                <div>
+                  <strong>
+                    # Slack /remind command for end of TA session for Support
+                    Channel
+                  </strong>
+                </div>
+                <div>
+                  # /remind #support-ei-cohort{this.state.cohortNum} "Support is
+                  finished for the day, but you can still get help from
+                  THINKCHAT using each checkpoint in your curriculum" at 5PM{" "}
+                  {this.state.timeZone} every weekday
                 </div>
               </div>
               <div className="welcome">
@@ -318,28 +337,63 @@ class YamlGenerator extends React.Component {
                   Please pay special attention to all items posted on Sunday's
                   dashboard, including opening and reading the absence form
                   which contains details of Thinkful's absence policy throughout
-                  your course.  Also, please read through the document about working in teams:
-                  https://rebrand.ly/group-work-protocol .  You can also find this and other helpful links 
-                  in the "Hover here for helpful links!" section at the top of this slack channel.
-                  
+                  your course. Also, please read through the document about
+                  working in teams: https://rebrand.ly/group-work-protocol . You
+                  can also find this and other helpful links in the "Hover here
+                  for helpful links!" section at the top of this slack channel.
                 </p>
                 <p>
                   Please accept your invitations to join your cohort's Github
-                  Organization at https://github.com/thinkful-ei-{this.state.organization}. I will
-                  post coding examples here that we discuss in class. If you
-                  don't see your invite, it may be in your spam folder. You can
-                  also directly accept your invitation at
-                  https://github.com/thinkful-ei-{this.state.organization}. If you cannot locate your
-                  invite or are unable to join the organization - please respond
-                  to this message by sending me your Github handle.
+                  Organization at https://github.com/thinkful-ei-
+                  {this.state.organization}. I will post coding examples here
+                  that we discuss in class. If you don't see your invite, it may
+                  be in your spam folder. You can also directly accept your
+                  invitation at https://github.com/thinkful-ei-
+                  {this.state.organization}. If you cannot locate your invite or
+                  are unable to join the organization - please respond to this
+                  message by sending me your Github handle.
                 </p>
                 <p>
                   Also, please register for our course zoom session here:
-                  {this.state.workshopUrl} You need to register with your first name,
-                   last name and email address to be able to attend class.
+                  {this.state.workshopUrl} You need to register with your first
+                  name, last name and email address to be able to attend class.
                   You only need to register once.
                 </p>
                 <p>I look forward to meeting you all on Monday!</p>
+              </div>
+              <div>
+                <strong>Note for TA Channel</strong>
+                <p>Good Afternoon @Teddy Mitchell @mike.stowe @casey @gwynndp !</p>
+                <p>
+                  Here is the link for the EI Cohort {this.state.cohortNum}{" "}
+                  workshop on Monday: {this.state.workshopUrl}
+                </p>
+                <p>
+                  Please join at the start of your shift at 11am EST and be
+                  prepared to introduce yourself to the students. During this
+                  workshop, students will create practice tickets. Instead of
+                  just closing these tickets, please take these tickets.
+                </p>
+                Steps
+                <ol>
+                  <li>Claim the ticket</li>
+                  <li>
+                    Claim all tickets for that team. If you claim a ticket for
+                    Team 1, claim all tickets for all members of Team 1.{" "}
+                  </li>
+                  <li>
+                    Go to the Discord Server and the team for the tickets.
+                  </li>
+                  <li>
+                    Ask each of the students to share their screen so that you
+                    know they are able to.
+                  </li>
+                  <li>
+                    Report in #ei-{this.state.startDate} channel any students
+                    who are having trouble sharing their screen.
+                  </li>
+                  <li>Close all tickets for the team</li>
+                </ol>
               </div>
             </div>
           </Col>

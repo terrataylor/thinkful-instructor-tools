@@ -12,15 +12,15 @@ import TeamGenerator from './components/TeamGenerator/TeamGenerator';
 
 import {
   BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route,
-  Link,
-  NavLink
+  Link
 } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
+    <HashRouter basename='/'>
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light  justify-content-between">
           <button className="navbar-brand">Thinkful Instructor Apps</button>
@@ -30,25 +30,25 @@ function App() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName="active" to="/roster">Roster</NavLink>
+                <Link className="nav-link" activeClassName="active" to="/roster">Roster</Link>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName="active" to="/yaml">Yaml File Generator</NavLink>
+                <Link className="nav-link" activeClassName="active" to="/yaml">Yaml File Generator</Link>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName="active" to="/attendance">Attendance Taker</NavLink>
+                <Link className="nav-link" activeClassName="active" to="/attendance">Attendance Taker</Link>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName="active" to="/organization">Github Org Invite Sender</NavLink>
+                <Link className="nav-link" activeClassName="active" to="/organization">Github Org Invite Sender</Link>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName="active" to="/teamgenerator">Team Generator</NavLink>
+                <Link className="nav-link" activeClassName="active" to="/teamgenerator">Team Generator</Link>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName="active" to="/ticket">TicketCounter</NavLink>
+                <Link className="nav-link" activeClassName="active" to="/ticket">TicketCounter</Link>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName="active" to="/resources">Resources</NavLink>
+                <Link className="nav-link" activeClassName="active" to="/resources">Resources</Link>
               </li>
             </ul>
           </div>
@@ -56,6 +56,7 @@ function App() {
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
+        
         <Switch>
           <Route path="/yaml">
             <YamlGenerator />
@@ -78,13 +79,13 @@ function App() {
           <Route path="/teamgenerator">
             <TeamGenerator />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Roster />
           </Route>
         
         </Switch>
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 

@@ -67,8 +67,7 @@ class Resources extends React.Component {
                                 <CardText>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://chegg.atlassian.net/secure/RapidBoard.jspa?rapidView=1646&projectKey=TFINS&selectedIssue=TFINS-289">Jira (Keep track of Todos)</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://chegg-portal1.sharepoint.com/default.aspx">Chegg Company Calendar</a></p>
-                                    <p><a target="_blank" rel="noopener noreferrer" href="https://thinkful-ed.github.io/ei-cohort-start-checklist/">Cohort Launch Checklist1 (EI)</a></p>
-                                    <p><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/129sZIHXy6HepYzxIeELAyU59L7RxaUNaqg9OtACYGLc/edit#">Cohort Launch Checklist2 (EI)</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://chegg-my.sharepoint.com/:x:/p/tauhida/ETnbziQmH6hMtz0PVXckRrgBOgEdKJSlayVg56dEQKMfgw">Cohort Module Completion Doc (EI)</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1p0mXIIIC68RCw4UgXLt3Z-ZsyY2eHM3XRlEqXv6ikX8/edit?ts=5ef21b21#gid=168336559">Cohort Staffing</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/Thinkful-Ed/full_time_career_path">Thinkful Github (Yamls, Syllabi & Master Syllabi)</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://chegg.sharepoint.com/sites/GOComm/Shared%20Documents/Forms/AllItems.aspx?originalPath=aHR0cHM6Ly9jaGVnZy5zaGFyZXBvaW50LmNvbS86Zjovcy9HT0NvbW0vRWxIa3hpdmJUODFObUV5OWo4RTVidmdCTnNTWENOX09Lcms4ZTFOLWFJOHEwZz9ydGltZT1vWFFQWHRsRjJFZw&id=%2Fsites%2FGOComm%2FShared%20Documents%2FThinkful%20Accessible%20Comms%2FZoom%20Webinar%20Documentations%2FZoomWebinars-CreatingZoomWebinars%2Epdf&parent=%2Fsites%2FGOComm%2FShared%20Documents%2FThinkful%20Accessible%20Comms%2FZoom%20Webinar%20Documentations">How to Create a Zoom Webinar</a></p>
@@ -80,8 +79,9 @@ class Resources extends React.Component {
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://thinkful.slides.com/users/sign_in">Slides</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://chegg-my.sharepoint.com/:f:/p/tauhida/EgpyabZsgy5Mhz8yuIBwc4IBahNn7lrwA366oyVmQ4NOlQ?e=CeunqK">Student Health Docs</a></p>
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://lark.thinkful.com/courses/43/tickets/">Student Tickets (EI)</a></p>
-                                    <p><a target="_blank" rel="noopener noreferrer" href="https://ftgen-trigger.herokuapp.com/">Syllabus Generator</a></p>
-                                    <p><a target="_blank" rel="noopener noreferrer" href="https://student-auditor.herokuapp.com/">Student Auditor</a></p>
+                                     <p><a target="_blank" rel="noopener noreferrer" href="https://student-auditor.herokuapp.com/">Student Auditor</a></p>
+                                     <p><a target="_blank" rel="noopener noreferrer" href="https://lark.thinkful.com/student-progress/">Student Progress</a></p>
+                                    <p><a target="_blank" rel="noopener noreferrer" href="https://ftgen-trigger.herokuapp.com/">Syllabus Generator</a></p>                                   
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://chegg-my.sharepoint.com/:x:/r/personal/tauhida_chegg_com/_layouts/15/guestaccess.aspx?share=ETwzAHpJQrdDvccTzrF9hDIB_-7wY3xo9ARL3FtoG2l6bA">Audit Spreadsheet</a></p>
                                     
                                     <p><a target="_blank" rel="noopener noreferrer" href="https://dashboard.thinkful.com/">Thinkful Courses Dashboard (Information about courses, modules, grading ruberics and checkpoints)</a></p>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Button, Container, FormGroup, Label, Input } from 'reactstrap';
 import apiUrl from '../../env';
-//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
+//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
 class Organization extends React.Component {
     state = {
         students: [],
@@ -38,11 +38,13 @@ class Organization extends React.Component {
                 fetch(`https://api.github.com/orgs/${student.githuborg}/invitations`, {
                      method: 'post',
                      headers:{
-                        'Authorization': `token ${this.state.token}`
+                        'Authorization': `token ${this.state.token}`,
+                        'accept':'application/vnd.github.v3+json'
                     },
                      body: JSON.stringify({
                          "email": student.email,
-                         "role": "direct_member"
+                         "role": "direct_member",
+                         "org": `${student.githuborg}`
                      })
                  }).then(data => {
                      if (data.ok) {
