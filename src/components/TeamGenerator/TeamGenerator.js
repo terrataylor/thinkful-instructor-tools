@@ -10,8 +10,9 @@ class TeamGenerator extends React.Component {
     state = {
         students: [],
         groups:[],
-        discordUrl:''
-
+        discordUrl:'',
+        studentRoster:'',
+        numPerGroup:0
     }
 
     handleChange = e => {
@@ -20,14 +21,14 @@ class TeamGenerator extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state.students)
-        let firstNames = this.state.students.map(student=>{
-            let names = student.fname.split(' ')
+        let studentArr = this.state.studentRoster.replace(/\t/g, " ").split("\n");
+        let firstNames = studentArr.map(student=>{
+            let names = student.split(' ')
             return names[0];
         });
         
        this.shuffle(firstNames);
-        let numOfTeams=Math.ceil(firstNames.length/5);
+        let numOfTeams=Math.ceil(firstNames.length/this.state.numPerGroup);
        let groups=this.createGroups(firstNames, numOfTeams);
         let lastGroup =groups[groups.length-1];
         if(lastGroup.length==1){
@@ -61,10 +62,10 @@ class TeamGenerator extends React.Component {
         return array;
       }
     componentDidMount(){
-        fetch(apiUrl)
+       /* fetch(apiUrl)
         .then(response => response.json())
         .then(students =>this.setState({ students }))
-        .catch(err => console.log("Error:",err))
+        .catch(err => console.log("Error:",err))*/
     }
 
    
@@ -74,7 +75,7 @@ class TeamGenerator extends React.Component {
         if (this.state.groups.length > 0) {
             items = this.state.groups.map((item,index) => {
                 return (
-                    <div key={item.id}>* Team {index+1} - {item.join('/')}</div>
+                    <div key={index}>* Team {index+1} - {item.join('/')}</div>
                 )
             })
         }
@@ -88,8 +89,17 @@ class TeamGenerator extends React.Component {
                                 <label>Discord Url</label>
                                 <input type="text" className="form-control" id="discordUrl"  name="discordUrl" onChange={this.handleChange} value={this.state.discordUrl} />
                             </div>
+                            <div className="form-group">
+                                <label>Student Roster</label>
+                                <textarea className="form-control" id="studentRoster"   rows="10" name="studentRoster" onChange={this.handleChange} value={this.state.studentRoster} />
+                            </div>
+                            <div className="form-group">
+                            <label>Number of Students per Team</label>
+                                   <input type="number" className="form-control" id="numPerGroup"  name="numPerGroup" onChange={this.handleChange} value={this.state.numPerGroup} />
+                       
+                            </div>
                             <div className="form-group row">
-                                <div className="col-sm-10">
+                                <div className="col-sm-5">
                                     <button className="btn btn-primary" onClick={this.handleSubmit.bind(this)}>Generate Teams</button>
                                 </div>
                             </div>

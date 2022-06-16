@@ -119,6 +119,7 @@ class YamlGenerator extends React.Component {
             <Label for="courseCode">Course Code</Label>
             <select
               id="courseCode"
+              name="courseCode"
               className="form-control"
               onChange={this.onChange}
               defaultValue="dev-301"

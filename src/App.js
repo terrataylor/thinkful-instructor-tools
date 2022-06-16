@@ -29,9 +29,9 @@ function App() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
+            {/* <li className="nav-item">
                 <Link className="nav-link" activeClassName="active" to="/roster">Roster</Link>
-              </li>
+  </li>*/}
               <li className="nav-item">
                 <Link className="nav-link" activeClassName="active" to="/yaml">Yaml File Generator</Link>
               </li>
@@ -44,9 +44,7 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" activeClassName="active" to="/teamgenerator">Team Generator</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" activeClassName="active" to="/ticket">TicketCounter</Link>
-              </li>
+             
               <li className="nav-item">
                 <Link className="nav-link" activeClassName="active" to="/resources">Resources</Link>
               </li>

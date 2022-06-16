@@ -7,8 +7,10 @@ import apiUrl from "../../env";
 class Attendance extends React.Component {
   state = {
     students: [],
+    classRoster: [],
     attendenceRecord: [],
-    chat: "",
+    report: "",
+    roster: "",
     absences: [],
   };
 
@@ -18,117 +20,37 @@ class Attendance extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.takeAttendance(this.state.chat);
+    this.setState({absences:''})
+    let formattedRoster = this.getItems(this.state.roster.toLowerCase())
+    this.takeAttendance(formattedRoster);
+
   }
 
-  takeAttendance(chat) {
-    let attendanceArray = [];
-    console.log(chat);
-    chat = chat.toLowerCase();
-    let notificationArr = [];
-    this.state.students.sort(function (a, b) {
-      return a.fname - b.fname;
-    });
-    for (let i = 0; i < this.state.students.length; i++) {
-      let student = this.state.students[i];
-      let fname = student.fname.toLowerCase();
-      let lname = student.lname.toLowerCase();
-      let name = `${fname.trim()} ${lname.trim()}`;
-      let preferredname =
-        student.preferredname !== undefined
-          ? `${student.preferredname} ${lname}`
-          : "";
-      let attendance = this.compareToChat(
-        chat,
-        name.toLowerCase()
-      );
-      if (name !== "") {
-        if (attendance) {
-          attendanceArray.push({ id: student.id, name: name, present: "x" });
-        } else {
-          attendanceArray.push({ id: student.id, name: name, present: " " });
-          notificationArr.push(student);
-        }
+  takeAttendance(roster) {
+    let attendanceArray = [],notificationArr=[];
+    roster.sort()
+    console.log(roster);
+    let id=0;
+    for (let student of roster) {
+      if (this.state.report.toLowerCase().includes(student)) {
+        attendanceArray.push({id:id++, name: student, present: "x" });
+      } else {
+        attendanceArray.push({ id:id++,name: student, present: " " });
+        notificationArr.push(student);
       }
     }
-    this.setState({
+   this.setState({
       attendenceRecord: attendanceArray,
       absences: notificationArr,
     });
   }
 
-  compareToChat = (chat, studentNames) => {
-    let chatlines = chat.split("\n");
-    let nameFound = false;
-    console.log('Student name', studentNames);
-    chatlines.forEach((line) => {
-        line= line.trim();
-        if (studentNames) {
-          let studentName = studentNames.trim();
-          console.log(studentName,line.toLowerCase());
-          if (line.toLowerCase().includes(studentName)) {
-            nameFound = true;
-          }
-      
-      }
-    });
-    return nameFound;
-  };
+  getItems(names) {
+    console.log(typeof names)
+    let classRoster = names.replace(/\t/g, " ").split("\n");
 
-  addItemToState = (student) => {
-    this.setState((prevState) => ({
-      students: [...prevState.students, student],
-    }));
-  };
-
-  generateNotifications = (students) => {
-    console.log(students);
-  };
-
-  addToDB = (student) => {
-    fetch(apiUrl, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        fname: student.fname,
-        lname: student.lname,
-        email: student.email,
-        asm: student.asm,
-        location: student.location,
-        slack: student.slack,
-        paymentplan: student.paymentplan,
-        cohort: student.cohort,
-      }),
-    })
-      .then((response) => response.json())
-      .then((item) => {
-        this.getItems();
-      })
-      .catch((err) => console.log(err));
-  };
-
-  getItems() {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((students) => {
-        students.sort((a, b) => {
-          let fa = a.fname.toLowerCase(),
-            fb = b.fname.toLowerCase();
-
-          if (fa < fb) {
-            return -1;
-          }
-          if (fa > fb) {
-            return 1;
-          }
-          return 0;
-        });
-        // console.log(students)
-        this.setState({ students });
-      })
-      .catch((err) => console.log(err));
+    this.setState({ classRoster });
+    return classRoster;
   }
 
   updateState = (student) => {
@@ -152,23 +74,19 @@ class Attendance extends React.Component {
   };
 
   componentDidMount() {
-    this.getItems();
+    //this.getItems();
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() { }
 
   render() {
     let absences = "";
     let students = "";
     if (this.state.absences.length > 0) {
-      absences = this.state.absences.map((item, idx) => {
-        //  console.log(item)
-        let staffStatement = `@${item.asm} ${item.fname} ${item.lname} was absent from session today. I have asked them to submit an absence request.`;
-        return <div key={idx}>{staffStatement}</div>;
-      });
+      console.log(this.state.absences);
       students = this.state.absences.map((item, idx) => {
         //  console.log(item)
-        let studentStatement = `${item.slack} Please submit an absence request for today's session. http://bit.ly/AbsenceRequests`;
+        let studentStatement = `@${item} Please submit an absence request for today's session. http://bit.ly/AbsenceRequests`;
         return <div key={idx}>{studentStatement}</div>;
       });
     }
@@ -179,25 +97,43 @@ class Attendance extends React.Component {
           <Col>
             <h2>Attendance</h2>
             <form>
-              <div className="form-group">
-                <label>Paste Chat Here</label>
-                <textarea
-                  className="form-control"
-                  id="chat"
-                  rows="10"
-                  name="chat"
-                  onChange={this.handleChange}
-                  value={this.state.chat}
-                />
-              </div>
-              <div className="form-group row">
-                <div className="col-sm-10">
-                  <button
+              <Row>
+                <Col>
+                <div className="form-group">
+                  <label>Paste Class Roster Here (Student Health Sheet)</label>
+                  <textarea
+                    className="form-control"
+                    id="roster"
+                    rows="10"
+                    name="roster"
+                    onChange={this.handleChange}
+                    value={this.state.roster}
+                  />
+                </div></Col>
+                <Col>
+                  <div className="form-group">
+                    <label>Paste Zoom Report Here</label>
+                    <textarea
+                      className="form-control"
+                      id="report"
+                      rows="10"
+                      name="report"
+                      onChange={this.handleChange}
+                      value={this.state.report}
+                    /></div></Col>
+              </Row>
+
+
+              <div className="form-group row" >
+                <div className="col-md-12" style={{display:'flex',justifyContent:'center'}}>
+                  <button disabled={this.state.roster!='' && this.state.report!=''}
                     className="btn btn-primary"
                     onClick={this.handleSubmit.bind(this)}
                   >
-                    Scan Chat
+
+                    Take Attendance
                   </button>
+                  
                 </div>
               </div>
             </form>
