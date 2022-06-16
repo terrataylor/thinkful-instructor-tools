@@ -38,9 +38,9 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" activeClassName="active" to="/attendance">Attendance Taker</Link>
               </li>
-              <li className="nav-item">
+              {/*<li className="nav-item">
                 <Link className="nav-link" activeClassName="active" to="/organization">Github Org Invite Sender</Link>
-              </li>
+</li>*/}
               <li className="nav-item">
                 <Link className="nav-link" activeClassName="active" to="/teamgenerator">Team Generator</Link>
               </li>

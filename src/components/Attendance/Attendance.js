@@ -126,7 +126,7 @@ class Attendance extends React.Component {
 
               <div className="form-group row" >
                 <div className="col-md-12" style={{display:'flex',justifyContent:'center'}}>
-                  <button disabled={this.state.roster!='' && this.state.report!=''}
+                  <button disabled={this.state.roster=='' && this.state.report==''}
                     className="btn btn-primary"
                     onClick={this.handleSubmit.bind(this)}
                   >
