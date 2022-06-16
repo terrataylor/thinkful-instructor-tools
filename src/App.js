@@ -68,9 +68,11 @@ function App() {
           <Route path="/resources">
             <Resources />
           </Route>
-          <Route path="/roster">
+         {/**
+          * <Route path="/roster">
             <Roster />
           </Route>
+          */} 
           <Route path="/ticket">
             <TicketCounter />
           </Route>
@@ -78,7 +80,7 @@ function App() {
             <TeamGenerator />
           </Route>
           <Route exact path="/">
-            <Roster />
+            <YamlGenerator />
           </Route>
         
         </Switch>
